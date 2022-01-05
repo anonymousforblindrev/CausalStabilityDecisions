@@ -1,6 +1,5 @@
 ---
 title: "Altering the preference for stable vs. unstable causes (introducing mean strength differences)"
-author: "Simon Stephan"
 output:  
   html_document:
     number_sections: true

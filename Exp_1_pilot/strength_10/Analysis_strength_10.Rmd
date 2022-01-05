@@ -1,6 +1,5 @@
 ---
 title: "Pilot of Experiment 1"
-author: "Simon Stephan"
 output:  
   html_document:
     number_sections: true

@@ -1,6 +1,5 @@
 ---
 title: "Exp. 1: Same mean strength but different stability"
-author: "Simon Stephan"
 output:  
   html_document:
     number_sections: true
