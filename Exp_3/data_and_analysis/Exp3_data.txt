@@ -1,0 +1,385 @@
+run_id	recorded_at	age	gender	main_dv	tech_issues	stable_cause	efficacy_check	variability_check	desktop_conf	att_conf	causal_strength	decision_level	str_correct	stab_correct	main_dv_rec
+64	25.12.2021 18:20	24	1	0.1	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.9
+101	26.12.2021 06:33	61	2	0.26	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.74
+119	26.12.2021 06:34	21	2	0.18	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.82
+140	26.12.2021 06:35	39	1	0.07	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.93
+168	26.12.2021 07:04	23	3	0.11	"{""Q0"":""I had no issues and saw no errors in spelling or grammar.""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.89
+195	26.12.2021 07:06	39	1	0.33	"{""Q0"":""no issues""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.67
+233	26.12.2021 08:08	47	1	0.19	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.81
+267	26.12.2021 09:19	22	1	0.24	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.76
+299	26.12.2021 09:21	23	1	0	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	1
+324	26.12.2021 11:18	33	1	0.09	"{""Q0"":""N/A""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.91
+380	26.12.2021 13:46	34	1	0.25	"{""Q0"":""Interesting study. Thanks for letting me take part.""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.75
+415	27.12.2021 06:31	40	1	0.07	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.93
+443	27.12.2021 06:54	35	2	0.2	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.8
+450	27.12.2021 07:14	18	1	1	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0
+451	27.12.2021 07:14	48	1	0	"{""Q0"":""Everything was displayed perfectly.""}"	A	85	1	1	1	eightyfive	personal	correct	correct	1
+526	28.12.2021 07:02	49	1	0.06	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.94
+10	25.12.2021 16:23	47	2	0.12	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.88
+41	25.12.2021 17:42	33	2	0	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	1
+126	26.12.2021 06:34	22	1	0.13	"{""Q0"":""no errors found""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.87
+154	26.12.2021 07:03	19	3	0.18	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.82
+177	26.12.2021 07:04	32	1	0.23	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.77
+217	26.12.2021 08:08	56	2	0.75	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.25
+243	26.12.2021 08:09	68	1	0.19	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.81
+271	26.12.2021 09:19	22	2	0.06	"{""Q0"":""N/A""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.94
+293	26.12.2021 09:20	42	2	0	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	1
+305	26.12.2021 11:18	71	1	0.94	"{""Q0"":""No errors as far as I could see.""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.06
+330	26.12.2021 11:18	31	1	0	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	1
+361	26.12.2021 13:02	49	2	0.34	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.66
+381	26.12.2021 13:46	30	2	0.05	"{""Q0"":""None""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.95
+400	26.12.2021 13:47	49	1	0	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	1
+441	27.12.2021 06:54	44	1	0	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	1
+452	27.12.2021 07:27	36	2	0.03	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.97
+44	25.12.2021 18:20	23	2	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+65	25.12.2021 18:20	19	1	0.87	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.87
+99	26.12.2021 06:33	33	1	0.99	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.99
+110	26.12.2021 06:34	28	2	0.74	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.74
+143	26.12.2021 06:35	20	2	0.87	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.87
+167	26.12.2021 07:04	36	1	0.91	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.91
+179	26.12.2021 07:04	34	1	0.89	"{""Q0"":""I did not notice any errors ""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.89
+210	26.12.2021 08:07	38	1	0.72	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.72
+241	26.12.2021 08:09	35	1	1	"{""Q0"":""None""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+269	26.12.2021 09:19	21	2	1	"{""Q0"":""No issues were noted during the study.""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+318	26.12.2021 11:18	40	1	1	"{""Q0"":""no errors""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+326	26.12.2021 11:18	64	1	1	"{""Q0"":""none, everything worked well. interesting study. the obvious solution would be to have both drugs, providing they are not contraindicated.""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+345	26.12.2021 13:02	20	1	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+370	26.12.2021 13:46	30	1	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+423	27.12.2021 06:31	41	2	0.62	"{""Q0"":""none""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.62
+453	27.12.2021 07:38	61	1	0.87	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.87
+13	25.12.2021 16:51	35	1	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	1
+34	25.12.2021 17:40	24	1	0.96	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.96
+58	25.12.2021 18:20	27	3	0.64	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.64
+80	25.12.2021 18:22	73	2	0.44	"{""Q0"":""all clear thank you""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.44
+120	26.12.2021 06:34	43	1	0.8	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.8
+146	26.12.2021 06:35	20	2	0.99	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.99
+187	26.12.2021 07:04	35	2	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	1
+222	26.12.2021 08:08	18	1	0.74	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.74
+232	26.12.2021 08:08	21	2	0.81	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.81
+259	26.12.2021 09:19	58	2	0.04	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.04
+312	26.12.2021 11:18	20	1	0.28	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.28
+360	26.12.2021 13:02	21	2	0.95	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.95
+375	26.12.2021 13:46	31	2	0.72	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.72
+418	27.12.2021 06:31	20	1	0.75	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.75
+454	27.12.2021 08:09	37	1	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	1
+455	27.12.2021 08:10	25	2	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	1
+20	25.12.2021 16:51	66	2	0.96	"{""Q0"":""none""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.96
+52	25.12.2021 18:20	32	1	0.88	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.88
+83	25.12.2021 18:22	26	2	0.9	"{""Q0"":""none that I can remember""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.9
+125	26.12.2021 06:34	31	2	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+136	26.12.2021 06:35	60	1	0.82	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.82
+171	26.12.2021 07:04	50	2	0.14	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.14
+181	26.12.2021 07:04	38	1	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+237	26.12.2021 08:08	60	2	0.92	"{""Q0"":""none""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.92
+262	26.12.2021 09:19	35	2	0.73	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.73
+286	26.12.2021 09:20	26	2	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+333	26.12.2021 11:18	74	1	1	"{""Q0"":""did not notice any errors""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+353	26.12.2021 13:02	22	1	1	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+397	26.12.2021 13:46	75	1	0.91	"{""Q0"":""none""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.91
+456	27.12.2021 08:22	24	2	0.42	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.42
+457	27.12.2021 08:23	33	1	1	"{""Q0"":""There were no errors, the study went on smoothly, and it was very easy to understand.""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	1
+458	27.12.2021 08:25	46	1	0.84	"{""Q0"":""no errors i noticed""}"	Z	85	2	1	1	eightyfive	personal	correct	correct	0.84
+1	25.12.2021 16:14	24	2	0.83	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.83
+51	25.12.2021 18:20	25	2	1	"{""Q0"":""None. ""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	1
+89	26.12.2021 06:33	42	2	0.94	"{""Q0"":""none""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.94
+112	26.12.2021 06:34	23	2	0.93	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.93
+149	26.12.2021 06:39	27	1	0.83	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.83
+175	26.12.2021 07:04	23	1	0.09	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.09
+257	26.12.2021 08:19	20	2	0.88	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.88
+277	26.12.2021 09:19	43	2	0.44	"{""Q0"":""N/A""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.44
+339	26.12.2021 11:19	20	1	0.96	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.96
+369	26.12.2021 13:46	21	2	0.77	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.77
+395	26.12.2021 13:46	34	1	0.93	"{""Q0"":""seemed fine""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.93
+421	27.12.2021 06:31	37	1	1	"{""Q0"":""None that i recall.""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	1
+460	27.12.2021 09:15	25	1	0.3	"{""Q0"":""None""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.3
+461	27.12.2021 09:15	44	2	0.74	"{""Q0"":""none""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.74
+462	27.12.2021 09:15	27	2	0	"{""Q0"":""None""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0
+525	28.12.2021 06:47	23	2	0.36	"{""Q0"":""}"	Z	85	2	1	1	eightyfive	general_norm	correct	correct	0.36
+39	25.12.2021 17:41	36	2	0.32	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.68
+57	25.12.2021 18:20	65	2	0.31	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.69
+113	26.12.2021 06:34	42	1	0.73	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.27
+144	26.12.2021 06:35	48	1	1	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0
+152	26.12.2021 07:03	28	2	0.16	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.84
+198	26.12.2021 08:07	67	2	0.31	"{""Q0"":""none""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.69
+212	26.12.2021 08:07	42	1	0.15	"{""Q0"":""I did not notice any issues that I could make a note of""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.85
+247	26.12.2021 08:09	63	2	1	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0
+309	26.12.2021 11:18	38	2	0.25	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.75
+336	26.12.2021 11:18	19	2	0.18	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.82
+392	26.12.2021 13:46	46	1	0.87	"{""Q0"":""None""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.13
+439	27.12.2021 06:54	26	2	0.14	"{""Q0"":""None ""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.86
+446	27.12.2021 06:55	20	1	0.24	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.76
+466	27.12.2021 09:49	58	1	0	"{""Q0"":""}"	A	85	1	1	1	eightyfive	personal	correct	correct	1
+467	27.12.2021 09:49	60	2	0.11	"{""Q0"":""No issues, thank you""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.89
+468	27.12.2021 09:50	19	1	0.09	"{""Q0"":""None""}"	A	85	1	1	1	eightyfive	personal	correct	correct	0.91
+46	25.12.2021 18:20	35	1	0.21	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.79
+78	25.12.2021 18:21	41	1	0.63	"{""Q0"":""n/a""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.37
+91	26.12.2021 06:33	19	2	0.25	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.75
+132	26.12.2021 06:34	27	2	0	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	1
+185	26.12.2021 07:04	23	2	0.72	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.28
+206	26.12.2021 08:07	62	2	0.03	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.97
+244	26.12.2021 08:09	22	2	0	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	1
+249	26.12.2021 08:09	62	2	0.14	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.86
+315	26.12.2021 11:18	62	1	0.1	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.9
+337	26.12.2021 11:19	32	1	0.09	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.91
+362	26.12.2021 13:03	57	2	0.9	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.1
+390	26.12.2021 13:46	38	1	0.39	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.61
+398	26.12.2021 13:47	67	1	0.29	"{""Q0"":""no issues\n\nThank you. ""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.71
+432	27.12.2021 06:37	23	2	0.22	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.78
+469	27.12.2021 09:58	25	2	0.28	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.72
+470	27.12.2021 09:59	38	2	0.14	"{""Q0"":""}"	A	85	1	1	1	eightyfive	general_norm	correct	correct	0.86
+23	25.12.2021 17:00	43	2	0.66	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.34
+40	25.12.2021 17:41	24	1	0	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	1
+68	25.12.2021 18:20	53	1	0.32	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.68
+88	25.12.2021 18:34	22	2	1	"{""Q0"":""none""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0
+121	26.12.2021 06:34	26	1	0.83	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.17
+129	26.12.2021 06:34	25	1	1	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0
+199	26.12.2021 08:07	36	2	0.79	"{""Q0"":""No issues""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.21
+215	26.12.2021 08:07	20	1	0.28	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.72
+239	26.12.2021 08:08	62	2	0.14	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.86
+268	26.12.2021 09:19	36	1	1	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0
+287	26.12.2021 09:20	32	2	0.28	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.72
+341	26.12.2021 11:19	35	2	1	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0
+357	26.12.2021 13:02	53	1	0.39	"{""Q0"":""No errors. Thanks""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.61
+368	26.12.2021 13:46	45	1	0	"{""Q0"":""Everything appeared to be fine and understandable. ""}"	A	75	1	1	1	seventyfive	personal	correct	correct	1
+402	26.12.2021 13:47	28	2	0.18	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.82
+417	27.12.2021 06:31	23	1	0	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	1
+4	25.12.2021 16:17	27	2	0.35	"{""Q0"":""N/A""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.65
+42	25.12.2021 17:42	54	1	0.48	"{""Q0"":""none""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.52
+56	25.12.2021 18:20	23	3	0.34	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.66
+81	25.12.2021 18:22	24	2	0.76	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.24
+115	26.12.2021 06:34	71	1	1	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0
+134	26.12.2021 06:35	45	1	0	"{""Q0"":""<U+0001F44C>""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	1
+173	26.12.2021 07:04	24	1	0.21	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.79
+183	26.12.2021 07:04	39	2	0.18	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.82
+214	26.12.2021 08:07	65	1	0.77	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.23
+226	26.12.2021 08:08	26	2	0.13	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.87
+255	26.12.2021 08:14	35	1	0.68	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.32
+274	26.12.2021 09:19	39	1	0.86	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.14
+307	26.12.2021 11:18	66	2	1	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0
+321	26.12.2021 11:18	32	1	1	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0
+349	26.12.2021 13:02	31	2	0.18	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.82
+376	26.12.2021 13:46	59	1	0.67	"{""Q0"":""no errors""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.33
+3	25.12.2021 16:16	26	1	0.32	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.32
+32	25.12.2021 17:40	53	2	0.92	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.92
+94	26.12.2021 06:33	27	1	1	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	1
+124	26.12.2021 06:34	57	2	0.84	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.84
+145	26.12.2021 06:35	64	2	0.17	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.17
+189	26.12.2021 07:05	32	2	0.09	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.09
+242	26.12.2021 08:09	22	2	0.35	"{""Q0"":""none""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.35
+250	26.12.2021 08:09	52	1	0.06	"{""Q0"":""Good survey""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.06
+290	26.12.2021 09:20	62	1	0.95	"{""Q0"":""seems ok""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.95
+298	26.12.2021 09:20	21	1	0.82	"{""Q0"":""None""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.82
+363	26.12.2021 13:03	28	2	0.13	"{""Q0"":""N/A - it was very well explained. ""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.13
+385	26.12.2021 13:46	24	2	0.66	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.66
+394	26.12.2021 13:46	53	2	0.69	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.69
+438	27.12.2021 06:54	37	1	0.84	"{""Q0"":""no errors""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.84
+471	27.12.2021 10:45	57	2	0.76	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.76
+472	27.12.2021 10:50	30	3	0.88	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.88
+6	25.12.2021 16:18	29	2	0.84	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.84
+35	25.12.2021 17:40	57	2	0.3	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.3
+76	25.12.2021 18:21	32	4	0.06	"{""Q0"":""none at all.""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.06
+98	26.12.2021 06:33	18	2	0.9	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.9
+114	26.12.2021 06:34	25	2	0.76	"{""Q0"":""No errors""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.76
+150	26.12.2021 06:40	23	2	0.22	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.22
+170	26.12.2021 07:04	26	1	0.98	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.98
+192	26.12.2021 07:05	27	1	0.09	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.09
+204	26.12.2021 08:07	57	2	0.43	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.43
+238	26.12.2021 08:08	29	2	0.23	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.23
+253	26.12.2021 08:10	24	1	0.11	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.11
+282	26.12.2021 09:19	43	1	0.98	"{""Q0"":""No Errors.""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.98
+304	26.12.2021 11:18	55	1	0.2	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.2
+328	26.12.2021 11:18	32	1	0.09	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.09
+355	26.12.2021 13:02	67	1	0.2	"{""Q0"":""None""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.2
+405	26.12.2021 13:48	37	2	0.16	"{""Q0"":""none""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.16
+17	25.12.2021 16:51	31	2	0.14	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.14
+49	25.12.2021 18:20	21	1	0.57	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.57
+90	26.12.2021 06:33	23	2	0.19	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.19
+111	26.12.2021 06:34	58	1	1	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	1
+142	26.12.2021 06:35	56	2	1	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	1
+163	26.12.2021 07:03	43	2	0.79	"{""Q0"":""No errors noticed.""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.79
+191	26.12.2021 07:05	24	2	0.77	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.77
+207	26.12.2021 08:07	50	1	0	"{""Q0"":""all was ok""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0
+240	26.12.2021 08:08	53	2	0.27	"{""Q0"":""it was all fine, thanks""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.27
+258	26.12.2021 09:19	36	2	1	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	1
+272	26.12.2021 09:19	70	2	0.16	"{""Q0"":""none""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.16
+314	26.12.2021 11:18	29	1	0	"{""Q0"":""None""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0
+371	26.12.2021 13:46	40	2	0.87	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.87
+408	26.12.2021 13:57	19	1	0.77	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.77
+474	27.12.2021 11:32	50	2	0.27	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.27
+476	27.12.2021 11:32	34	2	0.86	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	personal	correct	correct	0.86
+8	25.12.2021 16:20	57	2	0	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0
+77	25.12.2021 18:21	44	2	1	"{""Q0"":""no errors found""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	1
+118	26.12.2021 06:34	27	1	0.18	"{""Q0"":""none""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.18
+133	26.12.2021 06:34	33	2	0.18	"{""Q0"":""I did not notice any errors during the study, The only thing I can think of is on the graph, there should have been a legend because there was more than one line on the graph.""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.18
+155	26.12.2021 07:03	28	1	0.25	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.25
+209	26.12.2021 08:07	40	2	0.03	"{""Q0"":""no errors""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.03
+246	26.12.2021 08:09	23	1	0.62	"{""Q0"":""I had no issues while completing the study.""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.62
+260	26.12.2021 09:19	39	1	0	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0
+284	26.12.2021 09:20	49	1	0.24	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.24
+379	26.12.2021 13:46	34	1	0.68	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.68
+477	27.12.2021 11:49	28	1	0.12	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.12
+479	27.12.2021 11:49	36	1	0.17	"{""Q0"":""n/a""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.17
+481	27.12.2021 11:49	19	2	0.74	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.74
+482	27.12.2021 11:56	40	1	1	"{""Q0"":""I did not encounter any technical issue during the study.""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	1
+483	27.12.2021 12:15	39	2	0.09	"{""Q0"":""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.09
+484	27.12.2021 12:19	34	2	0.12	"{""Q0"":""none""}"	Z	75	2	1	1	seventyfive	general_norm	correct	correct	0.12
+43	25.12.2021 17:51	22	1	0.79	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.21
+74	25.12.2021 18:21	62	1	1	"{""Q0"":""nil""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0
+100	26.12.2021 06:33	22	1	0.34	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.66
+151	26.12.2021 07:03	50	1	0	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	1
+172	26.12.2021 07:04	29	1	0.86	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.14
+176	26.12.2021 07:04	55	2	0.84	"{""Q0"":""no errors, all good :)""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.16
+202	26.12.2021 08:07	36	2	1	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0
+248	26.12.2021 08:09	38	1	0.89	"{""Q0"":""No issues thanks""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.11
+288	26.12.2021 09:20	39	1	0	"{""Q0"":""None that I seen.""}"	A	75	1	1	1	seventyfive	personal	correct	correct	1
+308	26.12.2021 11:18	44	1	0.75	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.25
+340	26.12.2021 11:19	38	2	0.8	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.2
+356	26.12.2021 13:02	33	2	0.86	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.14
+388	26.12.2021 13:46	27	1	0.92	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.08
+406	26.12.2021 13:49	56	2	0	"{""Q0"":""}"	A	75	1	1	1	seventyfive	personal	correct	correct	1
+429	27.12.2021 06:36	35	2	0.19	"{""Q0"":""No issues were experienced during this study.""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.81
+524	28.12.2021 06:42	49	2	0.28	"{""Q0"":""none""}"	A	75	1	1	1	seventyfive	personal	correct	correct	0.72
+2	25.12.2021 16:14	29	2	0.31	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.69
+59	25.12.2021 18:20	19	1	0.34	"{""Q0"":""none""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.66
+85	25.12.2021 18:29	42	1	0.3	"{""Q0"":""none evident""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.7
+116	26.12.2021 06:34	33	1	0.87	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.13
+128	26.12.2021 06:34	28	1	0.96	"{""Q0"":""None""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.04
+162	26.12.2021 07:03	22	1	0.68	"{""Q0"":""none""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.32
+197	26.12.2021 08:07	26	2	0.24	"{""Q0"":""N/A""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.76
+201	26.12.2021 08:07	57	1	0.92	"{""Q0"":""didnt notice any errors""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.08
+231	26.12.2021 08:08	60	2	0.65	"{""Q0"":""Good luck with your research""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.35
+264	26.12.2021 09:19	23	2	0	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	1
+281	26.12.2021 09:19	38	2	0	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	1
+302	26.12.2021 11:18	60	1	0.84	"{""Q0"":""I would have like to have understood why only one of the medicines could be selected i.e. why couldn't a blood test be administered prior to choosing a suitable drug for a patient?""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.16
+342	26.12.2021 11:19	48	2	0.89	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.11
+364	26.12.2021 13:13	44	1	0.85	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0.15
+372	26.12.2021 13:46	43	1	1	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	0
+407	26.12.2021 13:56	37	1	0	"{""Q0"":""}"	A	75	1	1	1	seventyfive	general_norm	correct	correct	1
+27	25.12.2021 17:40	56	1	1	"{""Q0"":""none""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0
+37	25.12.2021 17:41	29	2	0.8	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.2
+103	26.12.2021 06:34	61	1	0.81	"{""Q0"":""none""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.19
+122	26.12.2021 06:34	27	2	0	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	1
+131	26.12.2021 06:34	42	1	1	"{""Q0"":""There weren't any technical issues or problems that interfered with the study.  I think I noticed one slight grammatical/phrasing error at one point in the instructions, but I can't recall the specific word now.  It was nothing that would interfere with the results though.""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0
+186	26.12.2021 07:04	44	1	1	"{""Q0"":""None""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0
+218	26.12.2021 08:08	55	1	0.22	"{""Q0"":""none""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.78
+245	26.12.2021 08:09	40	1	0.97	"{""Q0"":""Didn't notice anything in particular. Maybe some strange grammar but I don't remember the specifics.""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.03
+270	26.12.2021 09:19	61	2	1	"{""Q0"":""none""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0
+311	26.12.2021 11:18	52	1	0.39	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.61
+334	26.12.2021 11:18	29	1	0.2	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.8
+352	26.12.2021 13:02	28	1	0.59	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.41
+440	27.12.2021 06:54	32	1	0.94	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.06
+486	27.12.2021 12:52	35	1	1	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0
+487	27.12.2021 12:53	31	2	0.73	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.27
+522	28.12.2021 06:06	28	2	1	"{""Q0"":""The study performed fine for me. ""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0
+79	25.12.2021 18:21	56	2	0.83	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.17
+96	26.12.2021 06:33	21	1	0.87	"{""Q0"":""N/A""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.13
+105	26.12.2021 06:34	30	2	0.89	"{""Q0"":""N/A""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.11
+147	26.12.2021 06:35	75	2	0.77	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.23
+158	26.12.2021 07:03	33	2	1	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0
+193	26.12.2021 07:05	50	1	0.88	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.12
+208	26.12.2021 08:07	26	1	1	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0
+310	26.12.2021 11:18	23	1	1	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0
+325	26.12.2021 11:18	31	1	1	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0
+348	26.12.2021 13:02	51	1	0.86	"{""Q0"":""No issues or problems""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.14
+382	26.12.2021 13:46	30	1	1	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0
+396	26.12.2021 13:46	73	1	0.76	"{""Q0"":""I wasn't aware of any errors. I will say I'm not sure why you didn't give an overall percentage for zestril Forgive the spelling. There was variability among blood types, but you could have given no doubt an average factoring in the frequency of blood types. Nonetheless, as a directions required, I did my best to just kind of extrapolate that for myself, and that's what I based my decision on and I went more for the Z drug instead of the A drug.\n\nThanks for letting me participate and thanks for adding to our body of knowledge. :)""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.24
+489	27.12.2021 13:16	31	1	0.8	"{""Q0"":""None, thanks.""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.2
+490	27.12.2021 13:16	27	1	0.77	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.23
+492	27.12.2021 13:18	24	1	0.89	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.11
+502	27.12.2021 13:56	20	2	0.74	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.26
+30	25.12.2021 17:40	35	2	0.6	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.6
+55	25.12.2021 18:20	25	2	0.73	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.73
+108	26.12.2021 06:34	36	2	0	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0
+169	26.12.2021 07:04	32	1	0.18	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.18
+180	26.12.2021 07:04	32	1	0.12	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.12
+211	26.12.2021 08:07	53	1	0.16	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.16
+294	26.12.2021 09:20	35	1	0	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0
+296	26.12.2021 09:20	27	1	0.13	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.13
+367	26.12.2021 13:46	48	2	0	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0
+386	26.12.2021 13:46	36	2	0.2	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.2
+401	26.12.2021 13:47	48	2	0.22	"{""Q0"":""none""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.22
+424	27.12.2021 06:31	39	2	0.4	"{""Q0"":""None""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.4
+493	27.12.2021 13:35	29	2	0	"{""Q0"":""None""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0
+494	27.12.2021 13:35	22	2	0.82	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.82
+495	27.12.2021 13:35	47	2	0.22	"{""Q0"":""no problems""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.22
+496	27.12.2021 13:35	54	2	0.77	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.77
+47	25.12.2021 18:20	31	1	0.15	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.15
+67	25.12.2021 18:20	20	1	0.24	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.24
+93	26.12.2021 06:33	34	1	0.45	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.45
+127	26.12.2021 06:34	55	1	0	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0
+141	26.12.2021 06:35	24	2	0.4	"{""Q0"":""No issues in this study""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.4
+178	26.12.2021 07:04	20	3	0.79	"{""Q0"":""n/a""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.79
+228	26.12.2021 08:08	52	2	0.11	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.11
+292	26.12.2021 09:20	62	2	0.07	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.07
+300	26.12.2021 11:18	33	1	0.29	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.29
+332	26.12.2021 11:18	20	2	0.61	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.61
+365	26.12.2021 13:46	29	2	0.68	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.68
+378	26.12.2021 13:46	67	1	0.1	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.1
+506	27.12.2021 19:20	20	2	0.68	"{""Q0"":""none:)""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.68
+507	27.12.2021 19:20	44	1	0.59	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.59
+508	27.12.2021 19:25	59	1	0.1	"{""Q0"":""No Errors""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.1
+509	27.12.2021 19:31	26	1	0	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0
+28	25.12.2021 17:40	24	1	0	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0
+50	25.12.2021 18:20	25	2	0.72	"{""Q0"":""I did not see any errors but the names of the drugs were confusing so I forgot which one had more variation compared to the other. I think it would have been helpful if we were suggested to take notes.""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.72
+82	25.12.2021 18:22	22	1	0.02	"{""Q0"":""none""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.02
+123	26.12.2021 06:34	41	2	0	"{""Q0"":""no""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0
+194	26.12.2021 07:05	31	1	0.15	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.15
+213	26.12.2021 08:07	47	1	0.05	"{""Q0"":""none""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.05
+265	26.12.2021 09:19	63	1	0.07	"{""Q0"":""It seemed to work ok""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.07
+280	26.12.2021 09:19	53	1	1	"{""Q0"":""No""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	1
+320	26.12.2021 11:18	26	1	0.07	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.07
+354	26.12.2021 13:02	21	2	0.46	"{""Q0"":""N/A""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.46
+383	26.12.2021 13:46	23	2	0.16	"{""Q0"":""N/A""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.16
+403	26.12.2021 13:48	46	1	0.16	"{""Q0"":""none""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.16
+510	27.12.2021 20:16	34	1	0	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0
+511	27.12.2021 20:16	31	1	0.21	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.21
+512	27.12.2021 20:16	26	1	0.39	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.39
+513	27.12.2021 20:16	57	2	0.16	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	personal	correct	correct	0.16
+26	25.12.2021 17:40	27	1	0.08	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.08
+45	25.12.2021 18:20	50	2	0.21	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.21
+72	25.12.2021 18:21	40	2	0.2	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.2
+102	26.12.2021 06:33	27	2	0.29	"{""Q0"":""none""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.29
+135	26.12.2021 06:35	27	1	0.07	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.07
+190	26.12.2021 07:05	53	2	0.11	"{""Q0"":""None""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.11
+203	26.12.2021 08:07	41	1	0.02	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.02
+234	26.12.2021 08:08	32	1	0.18	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.18
+263	26.12.2021 09:19	20	1	0.3	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.3
+295	26.12.2021 09:20	28	1	0	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0
+319	26.12.2021 11:18	52	1	0.1	"{""Q0"":""none""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.1
+344	26.12.2021 13:02	71	1	0.11	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.11
+387	26.12.2021 13:46	32	2	0.78	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.78
+409	27.12.2021 06:31	43	1	0	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0
+514	27.12.2021 20:57	38	2	0.39	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.39
+515	27.12.2021 20:57	29	2	0.75	"{""Q0"":""}"	Z	65	2	1	1	sixtyfive	general_norm	correct	correct	0.75
+36	25.12.2021 17:41	36	1	0.89	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.11
+63	25.12.2021 18:20	20	2	0.72	"{""Q0"":""no errors""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.28
+117	26.12.2021 06:34	21	2	0.29	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.71
+139	26.12.2021 06:35	20	2	0.77	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.23
+165	26.12.2021 07:04	53	1	0.77	"{""Q0"":""No issues""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.23
+188	26.12.2021 07:04	36	1	0.77	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.23
+223	26.12.2021 08:08	42	2	0.25	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.75
+236	26.12.2021 08:08	61	1	0.85	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.15
+261	26.12.2021 09:19	30	2	1	"{""Q0"":""none""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0
+291	26.12.2021 09:20	19	2	0.83	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.17
+303	26.12.2021 11:18	50	2	0.19	"{""Q0"":""None""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.81
+338	26.12.2021 11:19	27	1	0.84	"{""Q0"":""No errors""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.16
+346	26.12.2021 13:02	58	2	0.71	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.29
+377	26.12.2021 13:46	65	1	0.82	"{""Q0"":""None""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.18
+411	27.12.2021 06:31	20	1	0.75	"{""Q0"":""There were no errors. ""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.25
+437	27.12.2021 06:49	30	1	0.61	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	personal	correct	correct	0.39
+29	25.12.2021 17:40	33	1	1	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0
+53	25.12.2021 18:20	53	1	0.75	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.25
+61	25.12.2021 18:20	22	1	0.95	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.05
+104	26.12.2021 06:34	20	2	0.73	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.27
+138	26.12.2021 06:35	19	1	1	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0
+166	26.12.2021 07:04	72	1	0.92	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.08
+224	26.12.2021 08:08	66	1	1	"{""Q0"":""None""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0
+251	26.12.2021 08:10	38	1	0.94	"{""Q0"":""None""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.06
+283	26.12.2021 09:19	66	2	0.82	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.18
+297	26.12.2021 09:20	49	2	0.85	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.15
+329	26.12.2021 11:18	39	1	0.81	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.19
+516	27.12.2021 21:09	27	2	0.68	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.32
+518	27.12.2021 21:09	39	1	0.6	"{""Q0"":""none""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.4
+519	27.12.2021 21:09	35	1	1	"{""Q0"":""No errors. Just tough to make judgements in these situations where you have to suspend belief.""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0
+520	27.12.2021 21:12	20	1	0.79	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0.21
+521	28.12.2021 05:45	57	2	1	"{""Q0"":""}"	A	65	1	1	1	sixtyfive	general_norm	correct	correct	0

@@ -1,0 +1,257 @@
+run_id	recorded_at	gender	age	main_dv	tech_issues	stable_cause	efficacy_check	variability_check	desktop_conf	att_conf	causal_strength	decision_level	str_correct	stab_correct	main_dv_rec
+6	23.12.2021 16:44	1	28	0	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	1
+15	23.12.2021 17:08	2	54	0.61	"{""Q0"":""no errors. Thank you.""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.39
+20	23.12.2021 17:08	1	28	0	"{""Q0"":""none seen""}"	A	15	1	1	1	ten	general_norm	correct	correct	1
+31	23.12.2021 17:09	1	29	0	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	1
+35	23.12.2021 17:10	1	20	0.59	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.41
+44	24.12.2021 05:56	1	41	0.04	"{""Q0"":""None""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.96
+62	24.12.2021 05:57	1	24	0	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	1
+73	24.12.2021 05:57	1	20	0.09	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.91
+82	24.12.2021 05:58	1	41	0.01	"{""Q0"":""looks good""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.99
+91	24.12.2021 06:16	1	24	0.15	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.85
+113	24.12.2021 06:17	2	54	0.21	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.79
+127	24.12.2021 06:18	2	50	0.27	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.73
+146	24.12.2021 06:20	2	29	0.16	"{""Q0"":""none""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.84
+153	24.12.2021 06:29	1	37	0.05	"{""Q0"":""No issues""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.95
+160	24.12.2021 06:30	3	24	0	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	1
+163	24.12.2021 06:30	2	20	0.36	"{""Q0"":""N/A""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.64
+185	24.12.2021 07:38	1	38	0.21	"{""Q0"":""no issues at all to report, thank you""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.79
+191	24.12.2021 07:39	1	33	0	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	1
+202	24.12.2021 07:39	2	59	0.89	"{""Q0"":""none so far""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.11
+212	24.12.2021 07:39	1	65	0.01	"{""Q0"":""none""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.99
+223	24.12.2021 07:39	1	27	0	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	1
+232	24.12.2021 07:40	2	25	0.3	"{""Q0"":""none.""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.7
+236	24.12.2021 07:40	1	39	0.11	"{""Q0"":""none""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.89
+244	24.12.2021 07:40	2	51	0.49	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.51
+255	24.12.2021 07:42	2	20	0.35	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.65
+265	24.12.2021 07:58	1	30	0.36	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.64
+272	24.12.2021 07:58	1	27	0.29	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.71
+288	24.12.2021 07:58	1	55	0	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	1
+304	24.12.2021 07:58	2	57	0.25	"{""Q0"":""none""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.75
+314	24.12.2021 07:59	1	44	1	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0
+320	24.12.2021 08:00	2	28	0	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	1
+324	24.12.2021 08:03	2	21	0.79	"{""Q0"":""}"	A	15	1	1	1	ten	general_norm	correct	correct	0.21
+9	23.12.2021 16:45	2	25	0.8	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.8
+38	23.12.2021 17:11	1	24	0.99	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.99
+46	24.12.2021 05:56	2	21	0.73	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.73
+51	24.12.2021 05:57	1	30	1	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	1
+60	24.12.2021 05:57	1	23	1	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	1
+66	24.12.2021 05:57	2	30	0.8	"{""Q0"":""No errors""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.8
+84	24.12.2021 05:58	2	54	0.75	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.75
+92	24.12.2021 06:16	2	22	0.9	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.9
+106	24.12.2021 06:17	2	28	1	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	1
+114	24.12.2021 06:17	1	41	0	"{""Q0"":""No errors""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0
+126	24.12.2021 06:18	2	65	0.9	"{""Q0"":""I didn't notice anything specific.""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.9
+133	24.12.2021 06:18	2	51	0.74	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.74
+144	24.12.2021 06:19	1	32	0.86	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.86
+158	24.12.2021 06:30	2	46	0.74	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.74
+167	24.12.2021 06:30	2	38	0.18	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.18
+176	24.12.2021 06:31	1	25	0.74	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.74
+182	24.12.2021 06:31	2	40	0.58	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.58
+188	24.12.2021 07:38	1	26	1	"{""Q0"":""None""}"	Z	15	2	1	1	ten	general_norm	correct	correct	1
+201	24.12.2021 07:39	1	47	0.04	"{""Q0"":""none""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.04
+209	24.12.2021 07:39	1	37	0.89	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.89
+213	24.12.2021 07:39	1	47	1	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	1
+221	24.12.2021 07:39	2	54	1	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	1
+234	24.12.2021 07:40	2	50	0.71	"{""Q0"":""No issues, all good.""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.71
+254	24.12.2021 07:41	1	40	0.94	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.94
+259	24.12.2021 07:57	1	37	0.95	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.95
+268	24.12.2021 07:58	2	29	0.93	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.93
+278	24.12.2021 07:58	2	51	0.37	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.37
+286	24.12.2021 07:58	2	38	0.66	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.66
+295	24.12.2021 07:58	2	55	0.56	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.56
+300	24.12.2021 07:58	2	42	0.29	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.29
+310	24.12.2021 07:59	1	43	1	"{""Q0"":""no comment""}"	Z	15	2	1	1	ten	general_norm	correct	correct	1
+317	24.12.2021 07:59	2	39	0.77	"{""Q0"":""}"	Z	15	2	1	1	ten	general_norm	correct	correct	0.77
+4	23.12.2021 16:43	2	25	0.97	"{""Q0"":""no errors""}"	Z	15	2	1	1	ten	personal	correct	correct	0.97
+16	23.12.2021 17:08	2	32	1	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	1
+28	23.12.2021 17:09	2	77	0.83	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.83
+36	23.12.2021 17:10	1	21	0.86	"{""Q0"":""nothing""}"	Z	15	2	1	1	ten	personal	correct	correct	0.86
+42	24.12.2021 05:56	3	26	0.89	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.89
+54	24.12.2021 05:57	2	43	0.89	"{""Q0"":""I did not notice any errors""}"	Z	15	2	1	1	ten	personal	correct	correct	0.89
+59	24.12.2021 05:57	1	53	0.65	"{""Q0"":""No errors.""}"	Z	15	2	1	1	ten	personal	correct	correct	0.65
+71	24.12.2021 05:57	1	54	1	"{""Q0"":""No Problems""}"	Z	15	2	1	1	ten	personal	correct	correct	1
+77	24.12.2021 05:58	2	49	0.88	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.88
+83	24.12.2021 05:58	2	19	0.76	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.76
+93	24.12.2021 06:16	2	19	0.23	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.23
+101	24.12.2021 06:16	2	60	0.9	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.9
+112	24.12.2021 06:17	2	25	1	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	1
+129	24.12.2021 06:18	2	61	0.8	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.8
+141	24.12.2021 06:19	2	52	0.79	"{""Q0"":""no errors found. Good luck with your research!""}"	Z	15	2	1	1	ten	personal	correct	correct	0.79
+156	24.12.2021 06:30	1	58	0.27	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.27
+166	24.12.2021 06:30	1	45	0.39	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.39
+183	24.12.2021 06:31	1	33	0	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0
+194	24.12.2021 07:39	1	24	0.9	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.9
+200	24.12.2021 07:39	1	69	1	"{""Q0"":""No problems or noticeable errors. Thank you.""}"	Z	15	2	1	1	ten	personal	correct	correct	1
+207	24.12.2021 07:39	2	23	1	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	1
+224	24.12.2021 07:39	1	48	0.25	"{""Q0"":""No Errors""}"	Z	15	2	1	1	ten	personal	correct	correct	0.25
+227	24.12.2021 07:40	1	40	0.57	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.57
+246	24.12.2021 07:40	2	24	0.64	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.64
+261	24.12.2021 07:57	1	32	0.71	"{""Q0"":""N/A""}"	Z	15	2	1	1	ten	personal	correct	correct	0.71
+269	24.12.2021 07:58	1	44	0.24	"{""Q0"":""Here's the error in your LOGIC: why the heck wouldn't I take BOTH pills? ""}"	Z	15	2	1	1	ten	personal	correct	correct	0.24
+277	24.12.2021 07:58	1	32	0.74	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.74
+290	24.12.2021 07:58	2	26	0.75	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.75
+298	24.12.2021 07:58	1	50	1	"{""Q0"":""None that I noticed.""}"	Z	15	2	1	1	ten	personal	correct	correct	1
+303	24.12.2021 07:58	1	49	0.62	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.62
+321	24.12.2021 08:01	1	37	0.91	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.91
+346	24.12.2021 14:04	2	21	0.9	"{""Q0"":""}"	Z	15	2	1	1	ten	personal	correct	correct	0.9
+8	23.12.2021 16:45	1	19	0.29	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.71
+12	23.12.2021 17:07	2	24	0.26	"{""Q0"":""\n""}"	A	15	1	1	1	ten	personal	correct	correct	0.74
+18	23.12.2021 17:08	2	37	0.05	"{""Q0"":""none""}"	A	15	1	1	1	ten	personal	correct	correct	0.95
+27	23.12.2021 17:09	2	35	0	"{""Q0"":""no errors. thank you. ""}"	A	15	1	1	1	ten	personal	correct	correct	1
+41	23.12.2021 17:11	1	19	0.57	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.43
+50	24.12.2021 05:57	1	22	0.82	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.18
+68	24.12.2021 05:57	2	50	0.86	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.14
+76	24.12.2021 05:58	2	18	0.14	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.86
+88	24.12.2021 06:15	1	23	0.27	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.73
+99	24.12.2021 06:16	2	31	0.23	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.77
+110	24.12.2021 06:17	2	22	0.63	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.37
+128	24.12.2021 06:18	2	19	0.18	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.82
+136	24.12.2021 06:19	1	57	0	"{""Q0"":""The page was a little small to see the buttons at the bottom""}"	A	15	1	1	1	ten	personal	correct	correct	1
+143	24.12.2021 06:19	1	23	0.74	"{""Q0"":""None""}"	A	15	1	1	1	ten	personal	correct	correct	0.26
+154	24.12.2021 06:29	1	37	0.43	"{""Q0"":""None noted""}"	A	15	1	1	1	ten	personal	correct	correct	0.57
+157	24.12.2021 06:30	1	23	0.33	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.67
+164	24.12.2021 06:30	1	27	0.29	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.71
+174	24.12.2021 06:31	2	59	0.25	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.75
+199	24.12.2021 07:39	2	19	0.17	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.83
+217	24.12.2021 07:39	2	30	0.23	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.77
+225	24.12.2021 07:40	1	22	0.03	"{""Q0"":""none""}"	A	15	1	1	1	ten	personal	correct	correct	0.97
+237	24.12.2021 07:40	2	48	0.21	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.79
+251	24.12.2021 07:40	1	30	0.27	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.73
+263	24.12.2021 07:57	2	23	0	"{""Q0"":""Thank you so much for choosing me to take part in your study. I experienced no issues during my time.""}"	A	15	1	1	1	ten	personal	correct	correct	1
+271	24.12.2021 07:58	2	34	0.3	"{""Q0"":""n/a""}"	A	15	1	1	1	ten	personal	correct	correct	0.7
+285	24.12.2021 07:58	1	39	0.16	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.84
+291	24.12.2021 07:58	1	72	0	"{""Q0"":""nothing, very well laid out""}"	A	15	1	1	1	ten	personal	correct	correct	1
+313	24.12.2021 07:59	1	51	0.11	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.89
+326	24.12.2021 08:05	2	28	0.26	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.74
+343	24.12.2021 13:57	1	28	0	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	1
+344	24.12.2021 13:57	1	28	0.17	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.83
+345	24.12.2021 13:57	1	37	0.77	"{""Q0"":""}"	A	15	1	1	1	ten	personal	correct	correct	0.23
+24	23.12.2021 17:08	2	25	0.05	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.95
+40	23.12.2021 17:11	1	28	1	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0
+48	24.12.2021 05:56	1	33	0.04	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.96
+80	24.12.2021 05:58	1	36	0.33	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.67
+89	24.12.2021 06:16	1	63	1	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0
+97	24.12.2021 06:16	1	24	0.09	"{""Q0"":""none""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.91
+104	24.12.2021 06:17	3	38	0	"{""Q0"":""N/A""}"	A	90	1	1	1	ninety	general_norm	correct	correct	1
+122	24.12.2021 06:18	2	43	0.15	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.85
+135	24.12.2021 06:19	2	21	0.2	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.8
+150	24.12.2021 06:22	2	37	0.3	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.7
+159	24.12.2021 06:30	2	37	0.02	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.98
+165	24.12.2021 06:30	1	38	0.77	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.23
+177	24.12.2021 06:31	1	31	1	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0
+181	24.12.2021 06:31	1	52	0	"{""Q0"":""No issues found.""}"	A	90	1	1	1	ninety	general_norm	correct	correct	1
+187	24.12.2021 07:38	2	38	0.32	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.68
+197	24.12.2021 07:39	2	41	0	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	1
+208	24.12.2021 07:39	1	58	0.09	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.91
+215	24.12.2021 07:39	1	32	0.29	"{""Q0"":""There weren't any errors I could see.""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.71
+231	24.12.2021 07:40	2	62	0	"{""Q0"":""none""}"	A	90	1	1	1	ninety	general_norm	correct	correct	1
+258	24.12.2021 07:50	1	34	0.01	"{""Q0"":""Nothing""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.99
+266	24.12.2021 07:58	2	43	0.08	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.92
+275	24.12.2021 07:58	2	35	0	"{""Q0"":""None""}"	A	90	1	1	1	ninety	general_norm	correct	correct	1
+294	24.12.2021 07:58	1	33	0.16	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.84
+311	24.12.2021 07:59	1	72	0.84	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.16
+328	24.12.2021 09:25	1	53	0.09	"{""Q0"":""no errors, very interesting and thought provoking study""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.91
+329	24.12.2021 09:25	1	29	0	"{""Q0"":""none""}"	A	90	1	1	1	ninety	general_norm	correct	correct	1
+330	24.12.2021 09:25	1	40	0.74	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.26
+331	24.12.2021 09:25	1	53	0.14	"{""Q0"":""n/a""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.86
+333	24.12.2021 09:25	1	72	1	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0
+334	24.12.2021 09:25	2	34	0.27	"{""Q0"":""n/a""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.73
+335	24.12.2021 09:25	2	48	0.06	"{""Q0"":""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.94
+348	24.12.2021 14:39	1	38	0.42	"{""Q0"":""none""}"	A	90	1	1	1	ninety	general_norm	correct	correct	0.58
+7	23.12.2021 16:44	1	19	1	"{""Q0"":""n/a""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	1
+29	23.12.2021 17:09	1	24	0.3	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.3
+39	23.12.2021 17:11	2	24	0.88	"{""Q0"":""n/a""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.88
+55	24.12.2021 05:57	2	20	1	"{""Q0"":""I tried my best to follow! A lot of big words to remember but overall understandable :)""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	1
+63	24.12.2021 05:57	1	30	0.82	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.82
+72	24.12.2021 05:57	2	20	0.5	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.5
+81	24.12.2021 05:58	1	68	0	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0
+86	24.12.2021 06:00	2	42	0	"{""Q0"":""no errors were encountered""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0
+94	24.12.2021 06:16	2	19	0.88	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.88
+100	24.12.2021 06:16	1	30	0.89	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.89
+123	24.12.2021 06:18	2	38	0.83	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.83
+131	24.12.2021 06:18	2	81	0.9	"{""Q0"":""the 10 to 15 comparison""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.9
+145	24.12.2021 06:19	2	22	0.83	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.83
+162	24.12.2021 06:30	2	70	0.1	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.1
+168	24.12.2021 06:30	2	22	0.98	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.98
+184	24.12.2021 06:37	2	28	1	"{""Q0"":""none""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	1
+190	24.12.2021 07:39	2	30	0.71	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.71
+198	24.12.2021 07:39	2	53	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	1
+210	24.12.2021 07:39	2	35	0.75	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.75
+219	24.12.2021 07:39	1	45	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	1
+230	24.12.2021 07:40	2	48	0.98	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.98
+235	24.12.2021 07:40	2	18	0.81	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.81
+248	24.12.2021 07:40	1	35	0.92	"{""Q0"":""n/a""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.92
+257	24.12.2021 07:47	2	26	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	1
+270	24.12.2021 07:58	2	51	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	1
+280	24.12.2021 07:58	1	27	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	1
+283	24.12.2021 07:58	1	26	0.79	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.79
+297	24.12.2021 07:58	2	41	0.76	"{""Q0"":""Didn't notice anything. Good luck!""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.76
+306	24.12.2021 07:59	1	26	0.76	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.76
+316	24.12.2021 07:59	1	69	0.59	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.59
+325	24.12.2021 08:03	1	34	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	1
+349	24.12.2021 14:50	1	19	0.97	"{""Q0"":""}"	Z	90	2	1	1	ninety	general_norm	correct	correct	0.97
+3	23.12.2021 16:43	1	54	1	"{""Q0"":""no technical error study was easy to understand and complete.""}"	Z	90	2	1	1	ninety	personal	correct	correct	1
+21	23.12.2021 17:08	2	25	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	1
+34	23.12.2021 17:10	1	31	0.83	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.83
+43	24.12.2021 05:56	2	32	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	1
+56	24.12.2021 05:57	2	33	0.82	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.82
+61	24.12.2021 05:57	1	53	1	"{""Q0"":""Nil errors""}"	Z	90	2	1	1	ninety	personal	correct	correct	1
+96	24.12.2021 06:16	1	27	0.74	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.74
+105	24.12.2021 06:17	1	26	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	1
+130	24.12.2021 06:18	2	23	0.31	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.31
+138	24.12.2021 06:19	2	62	0.96	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.96
+139	24.12.2021 06:19	2	48	0.96	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.96
+151	24.12.2021 06:25	2	36	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	1
+155	24.12.2021 06:30	1	53	0.77	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.77
+169	24.12.2021 06:31	2	22	1	"{""Q0"":""none""}"	Z	90	2	1	1	ninety	personal	correct	correct	1
+180	24.12.2021 06:31	2	46	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	1
+214	24.12.2021 07:39	2	18	0.69	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.69
+222	24.12.2021 07:39	2	43	0.78	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.78
+228	24.12.2021 07:40	2	54	0.95	"{""Q0"":""none""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.95
+240	24.12.2021 07:40	1	52	0.15	"{""Q0"":""no errors""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.15
+243	24.12.2021 07:40	1	25	0.66	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.66
+273	24.12.2021 07:58	1	29	0.69	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.69
+276	24.12.2021 07:58	1	32	0.99	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.99
+284	24.12.2021 07:58	2	36	0.88	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.88
+296	24.12.2021 07:58	2	36	0.81	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.81
+302	24.12.2021 07:58	2	39	0.94	"{""Q0"":""n/a""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.94
+307	24.12.2021 07:59	1	30	1	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	1
+318	24.12.2021 07:59	1	20	0.76	"{""Q0"":""Nothing""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.76
+323	24.12.2021 08:02	2	24	0.79	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.79
+336	24.12.2021 13:12	1	45	0.74	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.74
+337	24.12.2021 13:12	1	49	0.85	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.85
+338	24.12.2021 13:12	1	52	0.12	"{""Q0"":""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.12
+355	24.12.2021 15:43	2	33	0.7	"{""Q0"":""None, it was so nicely made.""}"	Z	90	2	1	1	ninety	personal	correct	correct	0.7
+5	23.12.2021 16:44	2	20	0.19	"{""Q0"":""no errors\n""}"	A	90	1	1	1	ninety	personal	correct	correct	0.81
+13	23.12.2021 17:07	2	30	0.25	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.75
+25	23.12.2021 17:08	1	32	0.02	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.98
+30	23.12.2021 17:09	1	38	0.71	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.29
+45	24.12.2021 05:56	2	29	0.11	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.89
+64	24.12.2021 05:57	2	38	0.2	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.8
+70	24.12.2021 05:57	1	62	0	"{""Q0"":""No problems to report here.""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+78	24.12.2021 05:58	2	40	0	"{""Q0"":""no errors. Best of luck in your research""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+90	24.12.2021 06:16	2	19	0.96	"{""Q0"":""n/a""}"	A	90	1	1	1	ninety	personal	correct	correct	0.04
+102	24.12.2021 06:16	1	21	1	"{""Q0"":""No errors :)""}"	A	90	1	1	1	ninety	personal	correct	correct	0
+108	24.12.2021 06:17	2	26	0.39	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.61
+125	24.12.2021 06:18	1	52	0	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+132	24.12.2021 06:18	1	37	0	"{""Q0"":""I did not encounter any issues with this study.""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+140	24.12.2021 06:19	1	54	0.25	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.75
+161	24.12.2021 06:30	2	37	0	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+171	24.12.2021 06:31	1	40	0.02	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.98
+186	24.12.2021 07:38	2	63	0.23	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.77
+192	24.12.2021 07:39	3	28	0.04	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.96
+205	24.12.2021 07:39	2	39	0.21	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.79
+211	24.12.2021 07:39	2	21	0	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+226	24.12.2021 07:40	1	27	0	"{""Q0"":""no errors""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+229	24.12.2021 07:40	2	49	0	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+249	24.12.2021 07:40	2	61	0	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+256	24.12.2021 07:44	2	29	0.12	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.88
+264	24.12.2021 07:57	1	36	0.07	"{""Q0"":""No thing thank you for your efforts ""}"	A	90	1	1	1	ninety	personal	correct	correct	0.93
+274	24.12.2021 07:58	1	77	0.01	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.99
+287	24.12.2021 07:58	2	26	0.07	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.93
+292	24.12.2021 07:58	1	52	0.3	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	0.7
+312	24.12.2021 07:59	1	36	0	"{""Q0"":""N/A""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+340	24.12.2021 13:42	2	32	0	"{""Q0"":""None.""}"	A	90	1	1	1	ninety	personal	correct	correct	1
+341	24.12.2021 13:42	2	25	0.22	"{""Q0"":""i had a keyboard malfunction where i entered my age wrong (im not 235) and then somehow opened developer tools and then got a blank screen. had no choice but to refresh the page and do the whole survey again which wasn't really a problem and allowed me to correct the error.""}"	A	90	1	1	1	ninety	personal	correct	correct	0.78
+353	24.12.2021 15:20	1	23	0	"{""Q0"":""}"	A	90	1	1	1	ninety	personal	correct	correct	1

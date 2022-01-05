@@ -1,0 +1,2339 @@
+---
+title: "Create Causal Stability Plots"
+output: html_document
+---
+
+
+```{r, message = FALSE, echo = FALSE, warning=FALSE}
+# packages
+library(ez)
+library(ggplot2)
+library(plyr)
+library(pastecs)
+library(ez)
+library(data.table)
+library(overlapping) # to compute the 
+library(tidyr)
+library(showtext)
+#install.packages("expss")
+library(expss)
+library(dplyr)
+
+font_add_google("Poppins", "Poppins")
+font_add_google("Roboto Mono", "Roboto Mono")
+showtext_auto()
+```
+
+
+
+
+
+# Strength .90 (unstable cause) vs. .85 (stable ause)
+
+
+
+```{r, echo = F}
+# define parameters for the beta distributions
+
+# see: https://stats.stackexchange.com/questions/12232/calculating-the-parameters-of-a-beta-distribution-using-the-mean-and-variance
+
+# mean1 <- 0.85
+# var1 <- 0.0001249375
+# mean2 <- 0.90
+# var2 <- 0.05
+# 
+# estBetaParams <- function(mu, var) {
+#   alpha <- ((1 - mu) / var - 1 / mu) * mu ^ 2
+#   beta <- alpha * (1 / mu - 1)
+#   return(params = list(alpha = alpha, beta = beta))
+# }
+# 
+# pars1 <- estBetaParams(mean1,var1)
+# 
+# pars2 <- estBetaParams(mean2,var2)
+# 
+# pars1
+# pars2
+```
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+alpha1 = 866.5837
+beta1 = 152.9265
+
+alpha2 = 0.72
+beta2 = 0.08
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+# Open a pdf file
+svg("betaplot_high_strength.svg", width = 5, height = 8) 
+#create plot of Beta distribution with shape parameters 2 and 10
+plot(p, dbeta(p, alpha1, beta1, ncp = 0), type='l', col = "red")
+lines(p, dbeta(p, alpha2, beta2), type ="l", col= "blue")
+dev.off()
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_1_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_1_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_1_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_1_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```
+
+
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+alpha1 = 866.5837
+beta1 = 152.9265
+
+alpha2 = 0.72
+beta2 = 0.08
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_2_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_2_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_2_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_2_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```
+
+
+
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+
+alpha1 = 866.5837
+beta1 = 152.9265
+
+alpha2 = 0.72
+beta2 = 0.08
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_3_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_3_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_3_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_3_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```
+
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+
+alpha1 = 866.5837
+beta1 = 152.9265
+
+alpha2 = 0.72
+beta2 = 0.08
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_4_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_4_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_4_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_4_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```
+
+
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+
+alpha1 = 866.5837
+beta1 = 152.9265
+
+alpha2 = 0.72
+beta2 = 0.08
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_5_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_5_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_5_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_90_5_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```
+
+
+
+
+# strength 0.10 (unstable cause) vs. 0.15 (stable cause)
+
+
+```{r, echo = F}
+# define parameters for the beta distributions
+
+# see: https://stats.stackexchange.com/questions/12232/calculating-the-parameters-of-a-beta-distribution-using-the-mean-and-variance
+
+# mean1 <- 0.15
+# var1 <- 0.0001249375
+# mean2 <- 0.10
+# var2 <- 0.05
+# 
+# estBetaParams <- function(mu, var) {
+#   alpha <- ((1 - mu) / var - 1 / mu) * mu ^ 2
+#   beta <- alpha * (1 / mu - 1)
+#   return(params = list(alpha = alpha, beta = beta))
+# }
+# 
+# pars1 <- estBetaParams(mean1,var1)
+# 
+# pars2 <- estBetaParams(mean2,var2)
+# 
+# pars1
+# pars2
+```
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+alpha1 = 152.9265
+beta1 = 866.5837
+
+alpha2 = 0.08
+beta2 = 0.72
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+# Open a pdf file
+svg("betaplot_low_strength.svg", width = 5, height = 8) 
+#create plot of Beta distribution with shape parameters 2 and 10
+plot(p, dbeta(p, alpha1, beta1, ncp = 0), type='l', col = "red")
+lines(p, dbeta(p, alpha2, beta2), type ="l", col= "blue")
+dev.off()
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_1_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_1_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_1_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_1_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```
+
+
+
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+alpha1 = 152.9265
+beta1 = 866.5837
+
+alpha2 = 0.08
+beta2 = 0.72
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_2_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_2_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_2_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_2_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```
+
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+alpha1 = 152.9265
+beta1 = 866.5837
+
+alpha2 = 0.08
+beta2 = 0.72
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_3_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_3_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_3_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_3_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```
+
+
+
+
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+alpha1 = 152.9265
+beta1 = 866.5837
+
+alpha2 = 0.08
+beta2 = 0.72
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_4_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_4_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_4_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_4_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```
+
+
+
+
+```{r}
+
+set.seed(NULL)
+#define range
+p = seq(0,1, length=100)
+
+# for beta function, see: https://en.wikipedia.org/wiki/Beta_distribution
+
+alpha1 = 152.9265
+beta1 = 866.5837
+
+alpha2 = 0.08
+beta2 = 0.72
+
+# objective parameters: 
+
+# mean1: 
+(m1 <- alpha1/(alpha1 + beta1))
+# var1: 
+(v1 <- (alpha1*beta1)/((alpha1+beta1)^2*(alpha1+beta1+1)))
+
+
+# mean2: 
+(m1 <- alpha2/(alpha2 + beta2))
+# var2: 
+(v1 <- (alpha2*beta2)/((alpha2+beta2)^2*(alpha2+beta2+1)))
+
+
+
+
+
+## Take quantiles as samples
+
+## We'll take quantiles as samples in order to obtain samples of size N that are representative of the distribution.
+
+
+# quantiles 
+q <- seq(0.001,0.999,0.025)
+
+qgamma1 <- round(qbeta(q, alpha1, beta1, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma1)
+median(qgamma1)
+var(qgamma1)
+
+qgamma2 <- round(qbeta(q, alpha2, beta2, ncp = 0, lower.tail = TRUE, log.p = FALSE), digits = 5)
+mean(qgamma2)
+median(qgamma2)
+var(qgamma2)
+
+
+
+y1 <- sample(qgamma1) # random order of quantiles
+y2 <- sample(qgamma2)
+x <- c(1:length(y1))
+
+dat <- data.frame(x,y1,y2)
+dat$x <- factor(dat$x)
+
+# long format 
+
+dat <- gather(dat, distr, y, y1:y2, factor_key=TRUE)
+```
+
+
+```{r}
+## Plot
+
+
+# generate random strings to label the x-axis categories 
+set.seed(1233242)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(1, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
+
+xaxis <- myFun(80)
+xaxis
+```
+
+
+```{r}
+library(scales)
+theme_set(theme_light(base_size = 18, base_family = "Poppins"))
+
+
+my_title <- expression("Two causes with strength 0.5 but different stability")
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_5_red_zyph_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne", "Zyphranol"),
+                        values = c("#F8766D","#619CFF","#00BA38")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_5_red_alce_red_stable.svg", plot=g, width=8.5, height=6)
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Alcetyne","Zyphranol"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_5_red_zyph_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+g <- 
+  ggplot(dat, aes(x=x, y=y, color = distr)) +
+    #ggtitle(my_title)+
+    scale_y_continuous(limits = c(0, 1), expand = c(0.01, 0.01), labels = percent) +
+    #geom_line()+
+    scale_x_discrete(labels=xaxis)+
+    stat_summary(aes(y = y, color = distr, group = distr), fun.y=mean, geom="line",
+                 size = 1.5, linetype = "solid", alpha = 0.9)+
+    stat_summary(aes(y = y, group= distr, fill = distr), fun.y=mean, colour="black", geom="point", 
+               shape = 21, size = 3, alpha = 0.7)+
+    scale_colour_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    scale_fill_manual(name  ="Medicine:", labels=c("Zyphranol", "Alcetyne"),
+                        values = c("#619CFF","#F8766D")) +
+    labs(x = "Type of blood composition", y = "Probability with which early treatment \nprevents death from Lipogastrosis") +
+    theme(
+      legend.position = "top",
+      legend.title = element_text(size = 18),
+      legend.text = element_text(size = 16),
+      axis.title = element_text(size = 18),
+      axis.title.y = element_text(size = 14),
+      axis.text.x = element_text(angle=90, vjust = 0.5, color = "black", size = 12),
+      #panel.grid = element_blank(),
+      axis.text.y = element_text(angle=0, hjust = 0.3, color = "black", size = 12),
+      panel.grid = element_line(colour="grey", linetype="dashed")
+      )
+g
+
+ggsave(file="strength_10_5_red_alce_red_unstable.svg", plot=g, width=8.5, height=6)
+
+
+
+
+
+```

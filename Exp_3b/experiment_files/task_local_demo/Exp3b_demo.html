@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo</title>
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugin-html-button-response.js"></script>
+    <script src="jspsych/plugin-survey-multi-choice.js"></script>
+    <script src="jspsych/plugin-html-slider-response.js"></script>
+	<script src="jspsych/plugin-image-keyboard-response.js"></script>
+	<script src="jspsych/plugin-html-keyboard-response.js"></script>
+    <script src="jspsych/plugin-preload.js"></script>
+    <script src="jspsych/plugin-survey-text.js"></script>
+    <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body></body>
+  <script>
+  
+// run study with ?demo=true at the end of url to have the demo mode
+
+
+var jsPsych = initJsPsych({
+  experiment_width: 800,
+  on_finish: function(){
+    window.location = "https://app.prolific.co/submissions/complete?cc=NOHS9GR9";
+  }
+});
+
+//var condition = CONDITION; 
+
+
+jsPsych.data.addProperties({condition: +condition});
+console.log("The condition is "+condition);
+
+/* create timeline */
+var timeline = [];
+
+/* preload images */
+var preload = {
+  type: jsPsychPreload,
+  images: ['img/uni_org_color_li.jpg']
+}
+timeline.push(preload);
+
+var styles = `
+  p {
+    text-align: justify
+  }
+  
+`
+var styleSheet = document.createElement("style")
+styleSheet.type = "text/css"
+styleSheet.innerText = styles
+document.head.appendChild(styleSheet)
+
+
+//////////////////////// images in the different conditions
+
+//////////////////////// images in the different conditions
+
+// stimuli for the school training scenario
+var images_9085_red_alce_red_stable = ["strength_9085_1_red_alce_red_stable.svg", 
+                                     "strength_9085_2_red_alce_red_stable.svg",
+                                     "strength_9085_3_red_alce_red_stable.svg",
+                                     "strength_9085_4_red_alce_red_stable.svg", 
+                                     "strength_9085_5_red_alce_red_stable.svg"
+                                    ];
+                                    
+var images_9085_red_alce_red_unstable = ["strength_9085_1_red_alce_red_unstable.svg", 
+                                       "strength_9085_2_red_alce_red_unstable.svg",
+                                       "strength_9085_3_red_alce_red_unstable.svg",
+                                       "strength_9085_4_red_alce_red_unstable.svg", 
+                                       "strength_9085_5_red_alce_red_unstable.svg"
+                                      ];
+                                      
+var images_9085_red_zyph_red_stable = ["strength_9085_1_red_zyph_red_stable.svg", 
+                                       "strength_9085_2_red_zyph_red_stable.svg",
+                                       "strength_9085_3_red_zyph_red_stable.svg",
+                                       "strength_9085_4_red_zyph_red_stable.svg", 
+                                       "strength_9085_5_red_zyph_red_stable.svg"
+                                    ]; 
+                                      
+var images_9085_red_zyph_red_unstable = ["strength_9085_1_red_zyph_red_unstable.svg", 
+                                       "strength_9085_2_red_zyph_red_unstable.svg",
+                                       "strength_9085_3_red_zyph_red_unstable.svg",
+                                       "strength_9085_4_red_zyph_red_unstable.svg", 
+                                       "strength_9085_5_red_zyph_red_unstable.svg"
+                                    ];   
+
+
+var images_9075_red_alce_red_stable = ["strength_9075_1_red_alce_red_stable.svg", 
+                                     "strength_9075_2_red_alce_red_stable.svg",
+                                     "strength_9075_3_red_alce_red_stable.svg",
+                                     "strength_9075_4_red_alce_red_stable.svg", 
+                                     "strength_9075_5_red_alce_red_stable.svg"
+                                    ];
+                                    
+var images_9075_red_alce_red_unstable = ["strength_9075_1_red_alce_red_unstable.svg", 
+                                       "strength_9075_2_red_alce_red_unstable.svg",
+                                       "strength_9075_3_red_alce_red_unstable.svg",
+                                       "strength_9075_4_red_alce_red_unstable.svg", 
+                                       "strength_9075_5_red_alce_red_unstable.svg"
+                                      ];
+                                      
+var images_9075_red_zyph_red_stable = ["strength_9075_1_red_zyph_red_stable.svg", 
+                                       "strength_9075_2_red_zyph_red_stable.svg",
+                                       "strength_9075_3_red_zyph_red_stable.svg",
+                                       "strength_9075_4_red_zyph_red_stable.svg", 
+                                       "strength_9075_5_red_zyph_red_stable.svg"
+                                    ]; 
+                                      
+var images_9075_red_zyph_red_unstable = ["strength_9075_1_red_zyph_red_unstable.svg", 
+                                       "strength_9075_2_red_zyph_red_unstable.svg",
+                                       "strength_9075_3_red_zyph_red_unstable.svg",
+                                       "strength_9075_4_red_zyph_red_unstable.svg", 
+                                       "strength_9075_5_red_zyph_red_unstable.svg"
+                                    ];   
+                                    
+                                    
+var images_9065_red_alce_red_stable = ["strength_9065_1_red_alce_red_stable.svg", 
+                                     "strength_9065_2_red_alce_red_stable.svg",
+                                     "strength_9065_3_red_alce_red_stable.svg",
+                                     "strength_9065_4_red_alce_red_stable.svg", 
+                                     "strength_9065_5_red_alce_red_stable.svg"
+                                    ];
+                                    
+var images_9065_red_alce_red_unstable = ["strength_9065_1_red_alce_red_unstable.svg", 
+                                       "strength_9065_2_red_alce_red_unstable.svg",
+                                       "strength_9065_3_red_alce_red_unstable.svg",
+                                       "strength_9065_4_red_alce_red_unstable.svg", 
+                                       "strength_9065_5_red_alce_red_unstable.svg"
+                                      ];
+                                      
+var images_9065_red_zyph_red_stable = ["strength_9065_1_red_zyph_red_stable.svg", 
+                                       "strength_9065_2_red_zyph_red_stable.svg",
+                                       "strength_9065_3_red_zyph_red_stable.svg",
+                                       "strength_9065_4_red_zyph_red_stable.svg", 
+                                       "strength_9065_5_red_zyph_red_stable.svg"
+                                    ]; 
+                                      
+var images_9065_red_zyph_red_unstable = ["strength_9065_1_red_zyph_red_unstable.svg", 
+                                       "strength_9065_2_red_zyph_red_unstable.svg",
+                                       "strength_9065_3_red_zyph_red_unstable.svg",
+                                       "strength_9065_4_red_zyph_red_unstable.svg", 
+                                       "strength_9065_5_red_zyph_red_unstable.svg"
+                                    ];  
+                                    
+// Stimuli for the stock market scenario
+var images_9085_red_alce_red_stable_Stock = ["strength_9085_1_red_alce_red_stable_Stock.svg", 
+                                     "strength_9085_2_red_alce_red_stable_Stock.svg",
+                                     "strength_9085_3_red_alce_red_stable_Stock.svg",
+                                     "strength_9085_4_red_alce_red_stable_Stock.svg", 
+                                     "strength_9085_5_red_alce_red_stable_Stock.svg"
+                                    ];
+                                    
+var images_9085_red_alce_red_unstable_Stock = ["strength_9085_1_red_alce_red_unstable_Stock.svg", 
+                                       "strength_9085_2_red_alce_red_unstable_Stock.svg",
+                                       "strength_9085_3_red_alce_red_unstable_Stock.svg",
+                                       "strength_9085_4_red_alce_red_unstable_Stock.svg", 
+                                       "strength_9085_5_red_alce_red_unstable_Stock.svg"
+                                      ];
+                                      
+var images_9085_red_zyph_red_stable_Stock = ["strength_9085_1_red_zyph_red_stable_Stock.svg", 
+                                       "strength_9085_2_red_zyph_red_stable_Stock.svg",
+                                       "strength_9085_3_red_zyph_red_stable_Stock.svg",
+                                       "strength_9085_4_red_zyph_red_stable_Stock.svg", 
+                                       "strength_9085_5_red_zyph_red_stable_Stock.svg"
+                                    ]; 
+                                      
+var images_9085_red_zyph_red_unstable_Stock = ["strength_9085_1_red_zyph_red_unstable_Stock.svg", 
+                                       "strength_9085_2_red_zyph_red_unstable_Stock.svg",
+                                       "strength_9085_3_red_zyph_red_unstable_Stock.svg",
+                                       "strength_9085_4_red_zyph_red_unstable_Stock.svg", 
+                                       "strength_9085_5_red_zyph_red_unstable_Stock.svg"
+                                    ];   
+
+
+var images_9075_red_alce_red_stable_Stock = ["strength_9075_1_red_alce_red_stable_Stock.svg", 
+                                     "strength_9075_2_red_alce_red_stable_Stock.svg",
+                                     "strength_9075_3_red_alce_red_stable_Stock.svg",
+                                     "strength_9075_4_red_alce_red_stable_Stock.svg", 
+                                     "strength_9075_5_red_alce_red_stable_Stock.svg"
+                                    ];
+                                    
+var images_9075_red_alce_red_unstable_Stock = ["strength_9075_1_red_alce_red_unstable_Stock.svg", 
+                                       "strength_9075_2_red_alce_red_unstable_Stock.svg",
+                                       "strength_9075_3_red_alce_red_unstable_Stock.svg",
+                                       "strength_9075_4_red_alce_red_unstable_Stock.svg", 
+                                       "strength_9075_5_red_alce_red_unstable_Stock.svg"
+                                      ];
+                                      
+var images_9075_red_zyph_red_stable_Stock = ["strength_9075_1_red_zyph_red_stable_Stock.svg", 
+                                       "strength_9075_2_red_zyph_red_stable_Stock.svg",
+                                       "strength_9075_3_red_zyph_red_stable_Stock.svg",
+                                       "strength_9075_4_red_zyph_red_stable_Stock.svg", 
+                                       "strength_9075_5_red_zyph_red_stable_Stock.svg"
+                                    ]; 
+                                      
+var images_9075_red_zyph_red_unstable_Stock = ["strength_9075_1_red_zyph_red_unstable_Stock.svg", 
+                                       "strength_9075_2_red_zyph_red_unstable_Stock.svg",
+                                       "strength_9075_3_red_zyph_red_unstable_Stock.svg",
+                                       "strength_9075_4_red_zyph_red_unstable_Stock.svg", 
+                                       "strength_9075_5_red_zyph_red_unstable_Stock.svg"
+                                    ];   
+                                    
+                                    
+var images_9065_red_alce_red_stable_Stock = ["strength_9065_1_red_alce_red_stable_Stock.svg", 
+                                     "strength_9065_2_red_alce_red_stable_Stock.svg",
+                                     "strength_9065_3_red_alce_red_stable_Stock.svg",
+                                     "strength_9065_4_red_alce_red_stable_Stock.svg", 
+                                     "strength_9065_5_red_alce_red_stable_Stock.svg"
+                                    ];
+                                    
+var images_9065_red_alce_red_unstable_Stock = ["strength_9065_1_red_alce_red_unstable_Stock.svg", 
+                                       "strength_9065_2_red_alce_red_unstable_Stock.svg",
+                                       "strength_9065_3_red_alce_red_unstable_Stock.svg",
+                                       "strength_9065_4_red_alce_red_unstable_Stock.svg", 
+                                       "strength_9065_5_red_alce_red_unstable_Stock.svg"
+                                      ];
+                                      
+var images_9065_red_zyph_red_stable_Stock = ["strength_9065_1_red_zyph_red_stable_Stock.svg", 
+                                       "strength_9065_2_red_zyph_red_stable_Stock.svg",
+                                       "strength_9065_3_red_zyph_red_stable_Stock.svg",
+                                       "strength_9065_4_red_zyph_red_stable_Stock.svg", 
+                                       "strength_9065_5_red_zyph_red_stable_Stock.svg"
+                                    ]; 
+                                      
+var images_9065_red_zyph_red_unstable_Stock = ["strength_9065_1_red_zyph_red_unstable_Stock.svg", 
+                                       "strength_9065_2_red_zyph_red_unstable_Stock.svg",
+                                       "strength_9065_3_red_zyph_red_unstable_Stock.svg",
+                                       "strength_9065_4_red_zyph_red_unstable_Stock.svg", 
+                                       "strength_9065_5_red_zyph_red_unstable_Stock.svg"
+                                    ]; 
+
+
+// Conditions: school training scenario
+var random_image_9085_red_alce_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_9085_red_alce_red_stable, 1);
+var random_image_9085_red_alce_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_9085_red_alce_red_unstable, 1);
+var random_image_9085_red_zyph_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_9085_red_zyph_red_stable, 1);
+var random_image_9085_red_zyph_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_9085_red_zyph_red_unstable, 1);
+
+var random_image_9075_red_alce_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_9075_red_alce_red_stable, 1);
+var random_image_9075_red_alce_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_9075_red_alce_red_unstable, 1);
+var random_image_9075_red_zyph_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_9075_red_zyph_red_stable, 1);
+var random_image_9075_red_zyph_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_9075_red_zyph_red_unstable, 1);
+
+var random_image_9065_red_alce_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_9065_red_alce_red_stable, 1);
+var random_image_9065_red_alce_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_9065_red_alce_red_unstable, 1);
+var random_image_9065_red_zyph_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_9065_red_zyph_red_stable, 1);
+var random_image_9065_red_zyph_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_9065_red_zyph_red_unstable, 1);
+
+
+// Conditions: stock market scenario
+var random_image_9085_red_alce_red_stable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9085_red_alce_red_stable_Stock, 1);
+var random_image_9085_red_alce_red_unstable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9085_red_alce_red_unstable_Stock, 1);
+var random_image_9085_red_zyph_red_stable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9085_red_zyph_red_stable_Stock, 1);
+var random_image_9085_red_zyph_red_unstable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9085_red_zyph_red_unstable_Stock, 1);
+
+var random_image_9075_red_alce_red_stable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9075_red_alce_red_stable_Stock, 1);
+var random_image_9075_red_alce_red_unstable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9075_red_alce_red_unstable_Stock, 1);
+var random_image_9075_red_zyph_red_stable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9075_red_zyph_red_stable_Stock, 1);
+var random_image_9075_red_zyph_red_unstable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9075_red_zyph_red_unstable_Stock, 1);
+
+var random_image_9065_red_alce_red_stable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9065_red_alce_red_stable_Stock, 1);
+var random_image_9065_red_alce_red_unstable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9065_red_alce_red_unstable_Stock, 1);
+var random_image_9065_red_zyph_red_stable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9065_red_zyph_red_stable_Stock, 1);
+var random_image_9065_red_zyph_red_unstable_Stock = jsPsych.randomization.sampleWithoutReplacement(images_9065_red_zyph_red_unstable_Stock, 1);
+
+
+
+
+//////////////////////////////////////////////////////
+/* Condition selection (just for offline demo) */
+
+var condition;
+var graph;
+var strength;
+
+
+var select = {
+  type: jsPsychSurveyText,
+  questions: [
+    {
+		prompt: 
+		`
+		<p><b>Select a condition: type in a number between 1 and 48.</b></p>
+		<p>- In conditions 01 to 24, the scenario is "literacy training"</p>
+		<p>- In conditions 01 to 08, the overall causal strength is .85 vs. .90</p>
+		<p>- In conditions 09 to 16, the overall causal strength is .75 vs. .90</p>
+		<p>- In conditions 17 to 24, the overall causal strength is .65 vs. .90</p>
+		<br>
+		<p>- In conditions 25 to 48, the scenario is "pension funds"</p>
+		<p>- In conditions 25 to 32, the overall causal strength is .85 vs. .90</p>
+		<p>- In conditions 33 to 40, the overall causal strength is .75 vs. .90</p>
+		<p>- In conditions 41 to 48, the overall causal strength is .65 vs. .90</p>
+
+		`, 
+		placeholder: 'number between 1 and 48',
+		required: true,
+		name: 'CondSel',
+	},
+  ],
+	on_finish: function(data){
+	condition = data.response.CondSel,
+	console.log(condition);
+	} 
+}
+timeline.push(select);
+
+
+
+
+
+//////////////////////////////////////////////////////
+/* Instructions ( all conditions)  */
+var cond_selected = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: function () {
+    return "You chose to see Condition "+condition;
+		},
+    choices: ['Continue']
+};
+timeline.push(cond_selected);
+
+
+//////////////////////////////////////////////////////
+/* Instructions ( all conditions) */
+var welcome = {
+    type: jsPsychHtmlButtonResponse,
+   stimulus:
+   `
+    <img src="img/uni_org_color_li.jpg" width = 100%></img>
+    <br>
+    <p>Welcome to this experiment. On the next screens, we will show you a fictitious scenario that we use to study our research question.</p>
+    <p>After the scenario description, we will ask you for your personal intuition about a particular question that has to be made in the scenario.</p>
+    <p><b>Please note</b>: For our purposes, it is important that you assume that everything is exactly as described in the scenario,
+    even if you think that the described situation is unrealistic, overly artificial, or too simple.</p>
+    <p><b>Also note</b>: This study contains memory checks with which we aim to ensure that you correctly understood the central aspects of the scenario.</p>
+    <p>So please read the scenario description that we will show you on the next screen thoroughly.</p>
+    <br>
+    `,
+     choices: ['Continue']
+}
+timeline.push(welcome);
+
+
+
+
+//////////////////////////////////////////////////////
+/* Confirmations */
+var confs = {
+  type: jsPsychSurveyMultiChoice,
+  questions: [
+    {
+      prompt: "This study works properly only on Desktop PCs and Laptops, and not on Smartphones or Tablets. Please confirm that you take part via Desktop PC or Laptop.", 
+      name: 'DesktopConf', 
+      options: ['1: I confirm', '2: I do not confirm'], 
+      required: true
+    }, 
+    {
+      prompt: "For the scientific utility of the results, it is very important that you provide complete and careful responses. How seriously will you take your participation in the study?", 
+      name: 'AttentConf', 
+      options: ['1: I will take it seriously', '2: I will not take it seriously'], 
+      required: true
+    }, 
+  ],
+  on_finish: function(data){
+	  jsPsych.data.addProperties({desktop_conf: data.response.DesktopConf, attent_conf: data.response.AttentConf});
+  },
+  preamble: "<b>Please note:</b>"
+};
+timeline.push(confs);
+
+
+
+/////////////////////////////////////////////////////////
+/* Instructions school */
+var instr_school = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:
+    `
+    <p><i>Please read the following hypothetical scenario thoroughly</i>:</p>
+    <p>
+    More and more children struggle to read and write correctly, a deficit that causes immense problems later in life. 
+    Reading and writing deficits can be overcome best if the problem is detected early and tackled with a special training program. 
+    Only two school training programs are available to help children with reading and writing deficits, <i>ReadingBoost®</i> and <i>RocketRead®</i>. 
+    On the next screen, we will give you some more information about the two training programs. Please study that information thoroughly.
+    </p>
+    <br>
+    `,
+    choices: ['Continue']
+}
+
+
+var instr_stocks = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:
+    `
+    <p><i>Please read the following hypothetical scenario thoroughly</i>:</p>
+    <p>
+    More and more retired people don’t have enough money to maintain their standard of living, a problem that causes immense social tension. 
+    One way to address this problem is to establish state pension funds, where the state invests tax money in the stock market and uses the gains to fund the pension system. 
+    Only two state pension funds are available to support the pension system, <i>PenShares®</i> and <i>RetireGrowth®</i>. 
+    On the next screen, we will give you some more information about the two state pension funds. Please study that information thoroughly.
+    </p>
+    <br>
+    `,
+    choices: ['Continue']
+}
+
+
+var cond_school = {
+  timeline: [instr_school],
+  conditional_function: function () {
+    if (condition <= 24) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_school);
+
+
+var cond_stocks = {
+  timeline: [instr_stocks],
+  conditional_function: function () {
+    if (condition >= 25) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_stocks);
+
+
+
+//////////////////////////////////////////////////////////
+// SCHOOL SCENARIO
+// key: Alce = ReadingBoost; Zyph = RocketRead
+
+/* Instructions strength .90 vs. .85 */
+var instr_strength_9085_red_alce_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 85%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, eighty-five will have overcome their deficit after a year and fifteen 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with RocketRead® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with RocketRead® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 85% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9085_red_alce_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9085_red_alce_red_stable;
+	strength = "85% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.85 vs. 0.90', stable_c: 'A', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var instr_strength_9085_red_alce_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 85%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, eighty-five will have overcome their deficit after a year and fifteen 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with ReadingBoost® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 85% average probability with which a training with RocketRead® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9085_red_alce_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+    on_finish: function(data){
+	graph = random_image_9085_red_alce_red_unstable;
+	strength = "85% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.85 vs. 0.90', stable_c: 'Z', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_9085_red_zyph_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 85%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, eighty-five will have overcome their deficit after a year and fifteen 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with ReadingBoost® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 85% average probability with which a training with RocketRead® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9085_red_zyph_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9085_red_zyph_red_stable;
+	strength = "85% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.85 vs. 0.90', stable_c: 'Z', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var instr_strength_9085_red_zyph_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 85%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, eighty-five will have overcome their deficit after a year and fifteen 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with RocketRead® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with RocketRead® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 85% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9085_red_zyph_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9085_red_zyph_red_unstable;
+	strength = "85% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.85 vs. 0.90', stable_c: 'A', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+/* Instructions strength .90 vs. .75 */
+var instr_strength_9075_red_alce_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 75%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, seventy-five will have overcome their deficit after a year and twenty-five
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with RocketRead® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with RocketRead® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 75% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9075_red_alce_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9075_red_alce_red_stable;
+	strength = "75% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.75 vs. 0.90', stable_c: 'A', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var instr_strength_9075_red_alce_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 75%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, seventy-five will have overcome their deficit after a year and twenty-five
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with ReadingBoost® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 75% average probability with which a training with RocketRead® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9075_red_alce_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+    on_finish: function(data){
+	graph = random_image_9075_red_alce_red_unstable;
+	strength = "75% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.75 vs. 0.90', stable_c: 'Z', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_9075_red_zyph_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 75%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, seventy-five will have overcome their deficit after a year and twenty-five
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with ReadingBoost® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 75% average probability with which a training with RocketRead® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9075_red_zyph_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9075_red_zyph_red_stable;
+	strength = "75% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.75 vs. 0.90', stable_c: 'Z', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var instr_strength_9075_red_zyph_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 75%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, seventy-five will have overcome their deficit after a year and twenty-five
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with RocketRead® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with RocketRead® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 75% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9075_red_zyph_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9075_red_zyph_red_unstable;
+	strength = "75% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.75 vs. 0.90', stable_c: 'A', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+/* Instructions strength .90 vs. .65 */
+var instr_strength_9065_red_alce_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 65%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, sixty-five will have overcome their deficit after a year and thirty-five
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with RocketRead® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with RocketRead® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 65% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9065_red_alce_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9065_red_alce_red_stable;
+	strength = "65% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.65 vs. 0.90', stable_c: 'A', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var instr_strength_9065_red_alce_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 65%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, sixty-five will have overcome their deficit after a year and thirty-five
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with ReadingBoost® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 65% average probability with which a training with RocketRead® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9065_red_alce_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+    on_finish: function(data){
+	graph = random_image_9065_red_alce_red_unstable;
+	strength = "65% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.65 vs. 0.90', stable_c: 'Z', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_9065_red_zyph_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 65%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, sixty-five will have overcome their deficit after a year and thirty-five
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with ReadingBoost® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 65% average probability with which a training with RocketRead® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9065_red_zyph_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9065_red_zyph_red_stable;
+	strength = "65% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.65 vs. 0.90', stable_c: 'Z', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var instr_strength_9065_red_zyph_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>ReadingBoost® and RocketRead® are both conducted during language classes, starting in 3rd grade. They both take one school year to complete.</p>
+    
+    <p>The two programs differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which a training with ReadingBoost® overcomes reading and writing deficits is 65%. 
+    That means: Out of one hundred children with the deficit who receive a training with ReadingBoost®, sixty-five will have overcome their deficit after a year and thirty-five
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>On average, the probability with which a training with RocketRead® overcomes reading and writing deficits is 90%. 
+    That means: Out of one hundred children with the deficit who receive a training with RocketRead®, ninety will have overcome their deficit after a year and ten 
+    will still struggle to read and write properly, on average.</p>
+    
+    <p>In addition to this difference in the trainings’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which a training with RocketRead® resolves reading and writing deficits varies across children depending on their individual learning style. 
+    That means that the probability of overcoming their deficit due to a training with RocketRead® will be much lower than 90% for some children and much higher than 90% for other children.</p> 
+    
+    <p>The 65% average probability with which a training with ReadingBoost® resolves reading and writing deficits varies only little depending on childrens’ individual learning style.</p>
+    
+    <p>The 40 different individual learning styles that scientists have identified are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the trainings' efficacy and childrens' individual learning styles. The two lines represent the two trainings. 
+    The different individual learning styles are shown on the x-axis. For each training, you can see how much the proportions of children who overcome their deficit differ 
+    depending on their individual learning style.</p>
+    <img src="img/`+random_image_9065_red_zyph_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing individual learning styles. The vertical axis (y-axis) shows the training efficacy in these
+    different groups of children (i.e., the percentage of children with reading and writing deficits who overcome their deficit if they receive an early training with one of the two trainings). 
+    The red and blue line represent the two trainings (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two training programs <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, 
+    please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9065_red_zyph_red_unstable;
+	strength = "65% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.65 vs. 0.90', stable_c: 'A', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+// STOCK MARKET SCENARIO
+// key: Alce = PenShares; Zyph = RetireGrowth
+
+/* Instructions strength .90 vs. .85 */
+var instr_strength_9085_red_alce_red_stable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 85%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, eighty-five years will end with a gain and fifteen will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into RetireGrowth® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 85% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9085_red_alce_red_stable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9085_red_alce_red_stable_Stock;
+	strength = "85% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.85 vs. 0.90', stable_c: 'A', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_9085_red_alce_red_unstable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 85%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, eighty-five years will end with a gain and fifteen will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into PenShares® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 85% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9085_red_alce_red_unstable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9085_red_alce_red_unstable_Stock;
+	strength = "85% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.85 vs. 0.90', stable_c: 'Z', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var instr_strength_9085_red_zyph_red_stable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 85%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, eighty-five years will end with a gain and fifteen will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into PenShares® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 85% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9085_red_zyph_red_stable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9085_red_zyph_red_stable_Stock;
+	strength = "85% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.85 vs. 0.90', stable_c: 'Z', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_9085_red_zyph_red_unstable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 85%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, eighty-five years will end with a gain and fifteen will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into RetireGrowth® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 85% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9085_red_zyph_red_unstable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9085_red_zyph_red_unstable_Stock;
+	strength = "85% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.85 vs. 0.90', stable_c: 'A', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+/* Instructions strength .90 vs. .75 */
+var instr_strength_9075_red_alce_red_stable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 75%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, seventy-five years will end with a gain and twenty-five will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into RetireGrowth® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 75% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9075_red_alce_red_stable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9075_red_alce_red_stable_Stock;
+	strength = "75% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.75 vs. 0.90', stable_c: 'A', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_9075_red_alce_red_unstable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 75%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, seventy-five years will end with a gain and twenty-five will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into PenShares® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 75% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9075_red_alce_red_unstable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9075_red_alce_red_unstable_Stock;
+	strength = "75% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.75 vs. 0.90', stable_c: 'Z', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var instr_strength_9075_red_zyph_red_stable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 75%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, seventy-five years will end with a gain and twenty-five will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into PenShares® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 75% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9075_red_zyph_red_stable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9075_red_zyph_red_stable_Stock;
+	strength = "75% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.75 vs. 0.90', stable_c: 'Z', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_9075_red_zyph_red_unstable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 75%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, seventy-five years will end with a gain and twenty-five will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into RetireGrowth® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 75% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9075_red_zyph_red_unstable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9075_red_zyph_red_unstable_Stock;
+	strength = "75% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.75 vs. 0.90', stable_c: 'A', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+/* Instructions strength .90 vs. .65 */
+var instr_strength_9065_red_alce_red_stable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 65%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, sixty-five years will end with a gain and thirty-five will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into RetireGrowth® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 65% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9065_red_alce_red_stable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9065_red_alce_red_stable_Stock;
+	strength = "65% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.65 vs. 0.90', stable_c: 'A', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_9065_red_alce_red_unstable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 65%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, sixty-five years will end with a gain and thirty-five will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into PenShares® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 65% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9065_red_alce_red_unstable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9065_red_alce_red_unstable_Stock;
+	strength = "65% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.65 vs. 0.90', stable_c: 'Z', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var instr_strength_9065_red_zyph_red_stable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 65%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, sixty-five years will end with a gain and thirty-five will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into PenShares® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 65% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9065_red_zyph_red_stable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9065_red_zyph_red_stable_Stock;
+	strength = "65% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.65 vs. 0.90', stable_c: 'Z', stable_col: 'red'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_9065_red_zyph_red_unstable_Stock = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>PenShares® and RetireGrowth® are funds that both invest in a broad variety of stocks and that both cash out their gains (if any) at the end of a year. 
+    The goal of both funds is to yield an annual gain and no loss.</p>
+    
+    <p>The two funds differ in their average probability to yield an annual gain (instead of a loss):</p>
+    
+    <p>On average, the probability with which an annual investment into PenShares® yields a gain at the end of the year is 65%. 
+    That means: Out of one hundred years in which the state makes annual investments into PenShares®, sixty-five years will end with a gain and thirty-five will end with a loss.</p>
+    
+    <p>On average, the probability with which an annual investment into RetireGrowth® yields a gain at the end of the year is 90%. 
+    That means: Out of one hundred years in which the state makes annual investments into RetireGrowth®, ninety years will end with a gain and ten will end with a loss.</p>
+    
+    <p>In addition to this difference in the funds’ average probability of yielding gains, there is another difference:</p>
+    
+    <p>The 90% average probability with which an annual investment into RetireGrowth® accomplishes the goal of an annual gain varies across changes in specific market parameters. 
+    That means that the probability of obtaining an annual gain due to an investment into RetireGrowth® will be much lower than 90% for some years and much higher than 90% for other years.</p> 
+    
+    <p>The 65% average probability with which an annual investment into PenShares® accomplishes the goal of an annual gain varies only little depending on changes in specific market parameters.</p>
+    
+    <p>The 40 different relevant market parameters economists have identified have equal probabilities of occurring in a year.</p>
+    
+    <p>Below you see a graph illustrating the relation between the funds’ probabilities of yielding an annual gain and the different relevant market parameters. 
+    The two lines represent the two funds. The different specific market parameters are shown on the x-axis. 
+    For each fund, you can see how much the probability of yielding an annual gain differs depending on the specific market parameters that are present in a given year.</p>
+    <img src="img/`+random_image_9065_red_zyph_red_unstable_Stock+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different possible market parameters. The vertical axis (y-axis) shows the funds probability in yielding an annual gain 
+    (i.e., the percentage of years in which an annual investment into a fund led to an annual gain at the end of the year). 
+    The red and blue line represent the two funds (see graph legend).</i></p>
+    
+    <p>If you have studied the information about the two state pension funds <b>thoroughly</b> and 
+    if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_9065_red_zyph_red_unstable_Stock;
+	strength = "65% versus 90%";
+	jsPsych.data.addProperties({c_strength: '0.65 vs. 0.90', stable_c: 'A', stable_col: 'blue'});
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+///////////////////////////////////////////////////////////
+
+
+var cond_1 = {
+  timeline: [instr_strength_9085_red_alce_red_stable],
+  conditional_function: function () {
+    if (condition == 1 || condition == 2) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_1);
+
+var cond_2 = {
+  timeline: [instr_strength_9085_red_alce_red_unstable],
+  conditional_function: function () {
+    if (condition == 3 || condition == 4) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_2);
+
+var cond_3 = {
+  timeline: [instr_strength_9085_red_zyph_red_stable],
+  conditional_function: function () {
+    if (condition == 5 || condition == 6) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_3);
+
+var cond_4 = {
+  timeline: [instr_strength_9085_red_zyph_red_unstable],
+  conditional_function: function () {
+    if (condition == 7 || condition == 8) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_4);
+
+var cond_5 = {
+  timeline: [instr_strength_9075_red_alce_red_stable],
+  conditional_function: function () {
+    if (condition == 9 || condition == 10) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_5);
+
+var cond_6 = {
+  timeline: [instr_strength_9075_red_alce_red_unstable],
+  conditional_function: function () {
+    if (condition == 11 || condition == 12) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_6);
+
+var cond_7 = {
+  timeline: [instr_strength_9075_red_zyph_red_stable],
+  conditional_function: function () {
+    if (condition == 13 || condition == 14) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_7);
+
+var cond_8 = {
+  timeline: [instr_strength_9075_red_zyph_red_unstable],
+  conditional_function: function () {
+    if (condition == 15 || condition == 16) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_8);
+
+var cond_9 = {
+  timeline: [instr_strength_9065_red_alce_red_stable],
+  conditional_function: function () {
+    if (condition == 17 || condition == 18) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_9);
+
+var cond_10 = {
+  timeline: [instr_strength_9065_red_alce_red_unstable],
+  conditional_function: function () {
+    if (condition == 19 || condition == 20) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_10);
+
+var cond_11 = {
+  timeline: [instr_strength_9065_red_zyph_red_stable],
+  conditional_function: function () {
+    if (condition == 21 || condition == 22) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_11);
+
+var cond_12 = {
+  timeline: [instr_strength_9065_red_zyph_red_unstable],
+  conditional_function: function () {
+    if (condition == 23 || condition == 24) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_12);
+
+
+
+
+var cond_13 = {
+  timeline: [instr_strength_9085_red_alce_red_stable_Stock],
+  conditional_function: function () {
+    if (condition == 25 || condition == 26) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_13);
+
+var cond_14 = {
+  timeline: [instr_strength_9085_red_alce_red_unstable_Stock],
+  conditional_function: function () {
+    if (condition == 27 || condition == 28) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_14);
+
+var cond_15 = {
+  timeline: [instr_strength_9085_red_zyph_red_stable_Stock],
+  conditional_function: function () {
+    if (condition == 29 || condition == 30) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_15);
+
+var cond_16 = {
+  timeline: [instr_strength_9085_red_zyph_red_unstable_Stock],
+  conditional_function: function () {
+    if (condition == 31 || condition == 32) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_16);
+
+var cond_17 = {
+  timeline: [instr_strength_9075_red_alce_red_stable_Stock],
+  conditional_function: function () {
+    if (condition == 33 || condition == 34) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_17);
+
+var cond_18 = {
+  timeline: [instr_strength_9075_red_alce_red_unstable_Stock],
+  conditional_function: function () {
+    if (condition == 35 || condition == 36) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_18);
+
+var cond_19 = {
+  timeline: [instr_strength_9075_red_zyph_red_stable_Stock],
+  conditional_function: function () {
+    if (condition == 37 || condition == 38) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_19);
+
+var cond_20 = {
+  timeline: [instr_strength_9075_red_zyph_red_unstable_Stock],
+  conditional_function: function () {
+    if (condition == 39 || condition == 40) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_20);
+
+var cond_21 = {
+  timeline: [instr_strength_9065_red_alce_red_stable_Stock],
+  conditional_function: function () {
+    if (condition == 41 || condition == 42) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_21);
+
+var cond_22 = {
+  timeline: [instr_strength_9065_red_alce_red_unstable_Stock],
+  conditional_function: function () {
+    if (condition == 43 || condition == 44) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_22);
+
+var cond_23 = {
+  timeline: [instr_strength_9065_red_zyph_red_stable_Stock],
+  conditional_function: function () {
+    if (condition == 45 || condition == 46) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_23);
+
+var cond_24 = {
+  timeline: [instr_strength_9065_red_zyph_red_unstable_Stock],
+  conditional_function: function () {
+    if (condition == 47 || condition == 48) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_24);
+
+
+
+
+////////////////////////////// Instructing the Decision Situation 
+
+// slider
+var dec_school = {
+    type: jsPsychHtmlSliderResponse,
+    stimulus: function () {
+	return `<div style="width:800px;">
+        <p><i>As a memory aid, below you see again the same graph that you were shown previously.</i></p>
+            <img src="img/`+graph+`"></img>
+              <figcaption align = justify><i>The horizontal axis (x-axis) shows the different existing individual learning styles. 
+              The vertical axis (y-axis) shows the training efficacy in these different groups of children (i.e., the percentage of children with reading and writing deficits 
+              who overcome their deficit if they receive an early training with one of the two trainings). 
+              The red and blue line represent the two trainings (see graph legend).</i>
+              </figcaption>
+  <p>In light of what you've learned about the reading and writing deficits and the two trainings, we'd now like you to imagine the following situation:</p>
+  <p>To help children with reading and writing deficits, the federal government has to make a decision. 
+  The government can decide to implement either ReadingBoost® or RocketRead® as an obligatory standard training, but not both. 
+  As you've learned, the average probability with which either training program helps children with reading and writing deficits is `+strength+`. 
+  Also, the degree to which these probabilities vary depending on childrens’ individual learning styles is different for the two programs. It is known that the 
+  different individual learning styles are equally frequent.</p>
+  <p><b>Based on your personal intuition, which of the two programs should the government decide to make the standard training program?</b></p>
+  </div>
+  `;
+  },
+    require_movement: true,
+    name: 'mainDV',
+    labels: ['Definitely <br>ReadingBoost®', 'Definitely <br>RocketRead®'],
+    on_finish: function(data){
+	  jsPsych.data.addProperties({scenario: 'School', mainDV: data.response.mainDVC});
+  },
+};
+
+
+
+// slider
+var dec_stocks = {
+    type: jsPsychHtmlSliderResponse,
+    stimulus: function () {
+	return `<div style="width:800px;">
+        <p><i>As a memory aid, below you see again the same graph that you were shown previously.</i></p>
+            <img src="img/`+graph+`"></img>
+              <figcaption align = justify><i>The horizontal axis (x-axis) shows the different possible market parameters. 
+              The vertical axis (y-axis) shows the funds probability in yielding an annual gain (i.e., the percentage of years in which an annual investment 
+              into a fund led to an annual gain at the end of the year). The red and blue line represent the two funds (see graph legend).</i>
+              </figcaption>
+  <p>In light of what you've learned about the problem that many retired people struggle to maintain their standard of living, 
+  and the possibility of the state to tackle this problem by investing into one of two different state pension funds, 
+  we'd now like you to imagine the following situation:</p>
+  <p>To support the pension system and help retired people, the federal government has to make a decision.
+  The government can decide to implement a long-term annual investment plan with either PenShares® or RetireGrowth® to support the pension system, but not with both. 
+  As you've learned, the average probability with which either state pension fund yields an annual gain (instead of a loss) is `+strength+`. 
+  Also, the degree to which these probabilities vary depending on the specific market parameters present in a given year is different for the two funds. 
+  It is known that the different market parameters have equal chances to occur in a year.</p>
+  <p><b>Based on your personal intuition, which of the two state pension funds should the government decide to select for annual investments?</b></p>
+  </div>
+  `;
+  },
+    require_movement: true,
+    name: 'mainDV',
+    labels: ['Definitely <br>PenShares®', 'Definitely <br>RetireGrowth®'],
+    on_finish: function(data){
+	  jsPsych.data.addProperties({scenario: 'Stocks', mainDV: data.response.mainDVC});
+  },
+};
+
+
+
+var cond_dec_school = {
+  timeline: [dec_school],
+  conditional_function: function () {
+    if (condition <= 24) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_dec_school);
+
+
+var cond_dec_stocks = {
+  timeline: [dec_stocks],
+  conditional_function: function () {
+    if (condition >= 25) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_dec_stocks);
+
+
+////////////////////////////////////// free explanation 
+
+var explan = {
+  type: 'survey-text',
+  preamble: `
+      <p>On this screen, we'd like to learn a little bit more about the reasons for the ratings that you just provided.</p>
+      `,
+  questions: [
+    {prompt: '<i>Please use the text field below to give a short explanations of why you gave these ratings.</i>', 
+    rows: 10, 
+    columns: 100, 
+    required: true,
+    name: 'Explanation'
+    }
+  ],
+  on_finish: function(data){
+	  jsPsych.data.addProperties({explanation: data.response.Explanation});
+  },
+};
+//timeline.push(explan);
+
+
+
+//////////////////////////////////////////////////////
+/* Memory Checks */
+var mem_check = {
+  type: jsPsychSurveyMultiChoice,
+  questions: [
+    {
+      prompt: "Please select the option that is correct about the average efficacy of the two different interventions you learned about.", 
+      name: 'Efficacy_check', 
+      options: ['One had 90% average efficacy and the other 85%.', 'One had 90% average efficacy and the other 75%.', 'One had 90% average efficacy and the other 65%.'], 
+      required: true
+    }, 
+    {
+      prompt: "Please select the option that is correct about the variability of the interventions' efficacy.", 
+      name: 'Variability_check', 
+      options: [`1: The efficacy of one of them varies a lot and the efficacy of the other doesn't.`, 
+      `2: The efficacy of the two interventions varies only little.`], 
+      required: true
+    }, 
+  ],
+  on_finish: function(data){
+	  jsPsych.data.addProperties({efficacy_check: data.response.Efficacy_check, variability_check: data.response.Variability_check});
+  },
+  preamble: "<b>Please answer these additional questions:</b>"
+};
+timeline.push(mem_check);
+
+
+
+
+
+/////////////////////////////////////// demographics
+var demogr_age = {
+  type: jsPsychSurveyText,
+  name: 'Age_query',
+  questions: [
+    {prompt: 'How old are you?', 
+    placeholder: 'Age as a number', 
+    required: true,
+    name: 'Age'
+    },
+  ],
+  on_finish: function(data){
+	  jsPsych.data.addProperties({age: data.response.Age});
+  },
+}
+
+
+
+var demogr_gender = {
+  type: jsPsychSurveyMultiChoice,
+  name: 'gender_query',
+  questions: [
+    {
+      prompt: "Please indicate with which gender you identify.", 
+      options: ['1: male', '2: female', '3: non-binary', '4: prefer not to say'],
+      required: true,
+      name: 'Gender'
+    },
+  ],
+  on_finish: function(data){
+	  jsPsych.data.addProperties({gender: data.response.Gender});
+  },
+};
+timeline.push(demogr_age, demogr_gender);
+
+
+
+
+/////////////////////////////////////// technical issues
+var tech_issues = {
+  type: jsPsychSurveyText,
+  name: 'Tech_issue_query',
+  questions: [
+    {prompt: 'In the text field below you can report any errors that you came across during the study (e.g., technical issues, layout problems, spelling errors, errors in program logic and flow, etc.).', 
+    rows: 10, 
+    columns: 100, 
+    required: false,
+    name: 'Tech_issue_report'
+    },
+  ],
+  on_finish: function(data){
+	  jsPsych.data.addProperties({tech_issues: data.response.Tech_issue_report});
+	  console.log(data.response.Tech_issue_report)
+  },
+}
+timeline.push(tech_issues);
+
+///////////////////////////////////// debriefing
+
+var debriefing = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: 
+    `
+    <img src="img/uni_org_color_li.jpg" width = 100%></img>
+    <p><b>Thank you for taking part in this study!</b></p>
+  
+    <p>The aim of this experiment is to find out more about how people reason about the stability of causal relationships in decision contexts. 
+    If you are interested in further details or if you have any questions or comments concerning the experiment, 
+    feel free to contact me (Simon Stephan) under <i>sstepha1@uni-goettingen.de</i>
+    
+    <p>To ensure you receive your reward, please click the button below to return to the Prolific website:</p>
+    `
+    ,
+    choices: ['Finish study']
+};
+timeline.push(debriefing);
+
+
+
+/////////////////////////////////////////////////////////////////
+/* start the experiment */
+    jsPsych.run(timeline);
+
+  
+  </script>
+</html>

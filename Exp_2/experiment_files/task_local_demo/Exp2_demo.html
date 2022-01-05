@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo</title>
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugin-html-button-response.js"></script>
+    <script src="jspsych/plugin-survey-multi-choice.js"></script>
+    <script src="jspsych/plugin-html-slider-response.js"></script>
+	<script src="jspsych/plugin-image-keyboard-response.js"></script>
+	<script src="jspsych/plugin-html-keyboard-response.js"></script>
+    <script src="jspsych/plugin-preload.js"></script>
+    <script src="jspsych/plugin-survey-text.js"></script>
+    <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body></body>
+  <script>
+  
+// run study with ?demo=true at the end of url to have the demo mode
+
+CONDITION = 1
+
+var condition = CONDITION; 
+//var condition = 3;
+
+//jsPsych.data.addProperties({condition: +condition});
+
+
+var jsPsych = initJsPsych({
+  experiment_width: 800,
+  on_finish: function(){
+    window.location = "https://app.prolific.co/submissions/complete?cc=NOHS9GR9"
+  }
+});
+
+
+
+/* create timeline */
+var timeline = [];
+
+/* preload images */
+var preload = {
+  type: jsPsychPreload,
+  images: ['img/uni_org_color_li.jpg']
+}
+timeline.push(preload);
+
+var styles = `
+  p {
+    text-align: justify
+  }
+  
+`
+var styleSheet = document.createElement("style")
+styleSheet.type = "text/css"
+styleSheet.innerText = styles
+document.head.appendChild(styleSheet)
+
+
+//////////////////////// images in the different conditions
+
+var images_10_red_alce_red_stable = ["strength_10_1_red_alce_red_stable.svg", 
+                                     "strength_10_2_red_alce_red_stable.svg",
+                                     "strength_10_3_red_alce_red_stable.svg",
+                                     "strength_10_4_red_alce_red_stable.svg", 
+                                     "strength_10_5_red_alce_red_stable.svg"
+                                    ];
+                                    
+var images_10_red_alce_red_unstable = ["strength_10_1_red_alce_red_unstable.svg", 
+                                       "strength_10_2_red_alce_red_unstable.svg",
+                                       "strength_10_3_red_alce_red_unstable.svg",
+                                       "strength_10_4_red_alce_red_unstable.svg", 
+                                       "strength_10_5_red_alce_red_unstable.svg"
+                                      ];
+                                      
+var images_10_red_zyph_red_stable = ["strength_10_1_red_zyph_red_stable.svg", 
+                                     "strength_10_2_red_zyph_red_stable.svg",
+                                     "strength_10_3_red_zyph_red_stable.svg",
+                                     "strength_10_4_red_zyph_red_stable.svg", 
+                                     "strength_10_5_red_zyph_red_stable.svg"
+                                    ]; 
+                                      
+var images_10_red_zyph_red_unstable = ["strength_10_1_red_zyph_red_unstable.svg", 
+                                       "strength_10_2_red_zyph_red_unstable.svg",
+                                       "strength_10_3_red_zyph_red_unstable.svg",
+                                       "strength_10_4_red_zyph_red_unstable.svg", 
+                                       "strength_10_5_red_zyph_red_unstable.svg"
+                                    ];   
+
+
+
+var images_90_red_alce_red_stable = ["strength_90_1_red_alce_red_stable.svg", 
+                                     "strength_90_2_red_alce_red_stable.svg",
+                                     "strength_90_3_red_alce_red_stable.svg",
+                                     "strength_90_4_red_alce_red_stable.svg", 
+                                     "strength_90_5_red_alce_red_stable.svg"
+                                    ];
+                                    
+var images_90_red_alce_red_unstable = ["strength_90_1_red_alce_red_unstable.svg", 
+                                       "strength_90_2_red_alce_red_unstable.svg",
+                                       "strength_90_3_red_alce_red_unstable.svg",
+                                       "strength_90_4_red_alce_red_unstable.svg", 
+                                       "strength_90_5_red_alce_red_unstable.svg"
+                                      ];
+                                      
+var images_90_red_zyph_red_stable = ["strength_90_1_red_zyph_red_stable.svg", 
+                                       "strength_90_2_red_zyph_red_stable.svg",
+                                       "strength_90_3_red_zyph_red_stable.svg",
+                                       "strength_90_4_red_zyph_red_stable.svg", 
+                                       "strength_90_5_red_zyph_red_stable.svg"
+                                    ]; 
+                                      
+var images_90_red_zyph_red_unstable = ["strength_90_1_red_zyph_red_unstable.svg", 
+                                       "strength_90_2_red_zyph_red_unstable.svg",
+                                       "strength_90_3_red_zyph_red_unstable.svg",
+                                       "strength_90_4_red_zyph_red_unstable.svg", 
+                                       "strength_90_5_red_zyph_red_unstable.svg"
+                                    ];   
+
+// Conditions: 1 to 4
+var random_image_10_red_alce_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_10_red_alce_red_stable, 1);
+var random_image_10_red_alce_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_10_red_alce_red_unstable, 1);
+var random_image_10_red_zyph_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_10_red_zyph_red_stable, 1);
+var random_image_10_red_zyph_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_10_red_zyph_red_unstable, 1);
+
+
+// Conditions: 5 to 8
+var random_image_90_red_alce_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_90_red_alce_red_stable, 1);
+var random_image_90_red_alce_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_90_red_alce_red_unstable, 1);
+var random_image_90_red_zyph_red_stable = jsPsych.randomization.sampleWithoutReplacement(images_90_red_zyph_red_stable, 1);
+var random_image_90_red_zyph_red_unstable = jsPsych.randomization.sampleWithoutReplacement(images_90_red_zyph_red_unstable, 1);
+
+
+
+//////////////////////////////////////////////////////
+/* Condition selection (just for offline demo) */
+
+var cond_chosen;
+var graph;
+var strength;
+
+
+var select = {
+  type: jsPsychSurveyText,
+  questions: [
+    {
+		prompt: 
+		`
+		<p><b>Select a condition: type in a number between 1 and 8.</b></p>
+		<p>- In conditions 1 to 4, the overall causal strength is .10 vs. .15</p>
+		<p>- In conditions 5 to 8, the overall causal strength is .90 vs. .85</p>
+		<p>- In conditions 1 and 2 and 5 and 6, the decision level is "normative".</p> 
+		<p>- In conditions 3 and 4 and 7 and 8, the decision level is "personal".</p>
+		`, 
+		placeholder: 'number between 1 and 8',
+		required: true,
+		name: 'CondSel',
+	},
+  ],
+	on_finish: function(data){
+	cond_chosen = data.response.CondSel,
+	console.log(cond_chosen);
+	} 
+}
+timeline.push(select);
+
+
+
+
+
+//////////////////////////////////////////////////////
+/* Instructions ( all conditions)  */
+var welcome = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: function () {
+    return "You chose to see Condition "+cond_chosen;
+		},
+    choices: ['Continue']
+};
+timeline.push(welcome);
+
+
+//////////////////////////////////////////////////////
+/* Instructions ( all conditions) */
+var welcome = {
+    type: jsPsychHtmlButtonResponse,
+   stimulus:
+   `
+    <img src="img/uni_org_color_li.jpg" width = 100%></img>
+    <br>
+    <p>Welcome to this experiment. On the next screens, we will show you a fictitious scenario that we use to study our research question.</p>
+    <p>After the scenario description, we will ask you for your personal intuition about a particular question that has to be made in the scenario.</p>
+    <p><b>Please note</b>: For our purposes, it is important that you assume that everything is exactly as described in the scenario,
+    even if you think that the described situation is unrealistic, overly artificial, or too simple.</p>
+    <p><b>Also note</b>: This study contains memory checks with which we aim to ensure that you correctly understood the central aspects of the scenario.</p>
+    <p>So please read the scenario description that we will show you on the next screen thoroughly.</p>
+    <br>
+    `,
+     choices: ['Continue']
+}
+timeline.push(welcome);
+
+
+
+
+//////////////////////////////////////////////////////
+/* Confirmations */
+var confs = {
+  type: jsPsychSurveyMultiChoice,
+  questions: [
+    {
+      prompt: "This study works properly only on Desktop PCs and Laptops, and not on Smartphones or Tablets. Please confirm that you take part via Desktop PC or Laptop.", 
+      name: 'DesktopConf', 
+      options: ['1: I confirm', '2: I do not confirm'], 
+      required: true
+    }, 
+    {
+      prompt: "For the scientific utility of the results, it is very important that you provide complete and careful responses. How seriously will you take your participation in the study?", 
+      name: 'AttentConf', 
+      options: ['1: I will take it seriously', '2: I will not take it seriously'], 
+      required: true
+    }, 
+  ],
+  preamble: "<b>Please note:</b>"
+};
+timeline.push(confs);
+
+
+
+/////////////////////////////////////////////////////////
+/* Instructions medicines (all conditions) */
+var instr_medicines = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:
+    `
+    <p><i>Please read the following hypothetical scenario thoroughly</i>:</p>
+    <p>
+    A country is threatened by a virus causing a dangerous disease called Lipogastrosis, a severe damaging of the intestinal tract.
+    Infected people will die from the disease unless they receive fast medical treatment during its early stage.
+    Only two medicines are available to treat early-stage Lipogastrosis, <i>Alcetyne®</i> and <i>Zyphranol®</i>.
+    On the next screen, we will give you some more information about the two medicines. Please study that information thoroughly.
+    </p>
+    <br>
+    `,
+    choices: ['Continue']
+}
+timeline.push(instr_medicines);
+
+
+
+//////////////////////////////////////////////////////////
+/* Instructions strength .10 */
+
+var instr_strength_10_red_alce_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>Alcetyne® and Zyphranol® are both administered orally in the form of pills. Neither of them has severe side effects.</p>
+    
+    <p>The two medicines differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis is 15%. 
+    That means: Out of one hundred infected people who receive an early treatment with Alcetyne®, fifteen will be rescued and eighty-five will still die from the disease, 
+    on average.</p>
+    
+    <p>On average, the probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis is 10%. 
+    That means: Out of one hundred infected people who receive an early treatment with Zyphranol®, ten will be rescued and ninety will still die from the disease, 
+    on average.</p>
+    
+    <p>In addition to this difference in the medicines’ average efficacy, there is another difference:</p>
+    
+    <p>The 10% average probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis varies across patients depending on a patient’s type 
+    of blood composition. That means that the probability of survival due to a treatment with Zyphranol® will be much lower than 10% for some patients and much 
+    higher than 10% for other patients.</p>
+    
+    <p>The 15% average probability with which an early treatment with Alcetyne® prevents infected people from dying varies only 
+    little depending on patients' blood composition.</p>
+    
+    <p>The different types of blood composition are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the drugs' preventive efficacy and patients' blood compositions. The two lines represent the two medicines. 
+    The different types of blood composition are shown on the x-axis. For each medicine, 
+    you can see how much the proportions of rescued infected patients differ depending on their type of blood composition.</p>
+    
+    <img src="img/`+random_image_10_red_alce_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+        The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+        (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+        The red and blue line represent the two medicines (see graph legend).</i></p>
+        <p>If you have studied the information about the two medicines <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_10_red_alce_red_stable;
+	strength = "10%";
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_10_red_alce_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>Alcetyne® and Zyphranol® are both administered orally in the form of pills. Neither of them has severe side effects.</p>
+    
+    <p>The two medicines differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis is 15%. 
+    That means: Out of one hundred infected people who receive an early treatment with Zyphranol®, fifteen will be rescued and eighty-five will still die from the disease, 
+    on average.</p>
+    
+    <p>On average, the probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis is 10%. 
+    That means: Out of one hundred infected people who receive an early treatment with Alcetyne®, ten will be rescued and ninety will still die from the disease, 
+    on average.</p>
+    
+    <p>In addition to this difference in the medicines’ average efficacy, there is another difference:</p>
+    
+    <p>The 10% average probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis varies across patients depending on a patient’s type 
+    of blood composition. That means that the probability of survival due to a treatment with Alcetyne® will be much lower than 10% for some patients and much 
+    higher than 10% for other patients.</p> 
+    
+    <p>The 15% average probability with which an early treatment with Zyphranol® prevents infected people from dying varies only 
+    little depending on patients' blood composition.</p>
+    
+    <p>The different types of blood composition are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the drugs' preventive efficacy and patients' blood compositions. The two lines represent the two medicines. 
+    The different types of blood composition are shown on the x-axis. For each medicine, 
+    you can see how much the proportions of rescued infected patients differ depending on their type of blood composition.</p>
+    
+    <img src="img/`+random_image_10_red_alce_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+        The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+        (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+        The red and blue line represent the two medicines (see graph legend).</i></p>
+        <p>If you have studied the information about the two medicines <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_10_red_alce_red_unstable;
+	strength = "10%";
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_10_red_zyph_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>Alcetyne® and Zyphranol® are both administered orally in the form of pills. Neither of them has severe side effects.</p>
+    
+    <p>The two medicines differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis is 15%. 
+    That means: Out of one hundred infected people who receive an early treatment with Zyphranol®, fifteen will be rescued and eighty-five will still die from the disease, 
+    on average.</p>
+    
+    <p>On average, the probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis is 10%. 
+    That means: Out of one hundred infected people who receive an early treatment with Alcetyne®, ten will be rescued and ninety will still die from the disease, 
+    on average.</p>
+    
+    <p>In addition to this difference in the medicines’ average efficacy, there is another difference:</p>
+    
+    <p>The 10% average probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis varies across patients depending on a patient’s type 
+    of blood composition. That means that the probability of survival due to a treatment with Alcetyne® will be much lower than 10% for some patients and much 
+    higher than 10% for other patients.</p> 
+    
+    <p>The 15% average probability with which an early treatment with Zyphranol® prevents infected people from dying varies only 
+    little depending on patients' blood composition.</p>
+    
+    <p>The different types of blood composition are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the drugs' preventive efficacy and patients' blood compositions. The two lines represent the two medicines. 
+    The different types of blood composition are shown on the x-axis. For each medicine, 
+    you can see how much the proportions of rescued infected patients differ depending on their type of blood composition.</p>
+    
+    <img src="img/`+random_image_10_red_zyph_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+        The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+        (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+        The red and blue line represent the two medicines (see graph legend).</i></p>
+        <p>If you have studied the information about the two medicines <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_10_red_zyph_red_stable;
+	strength = "10%";
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_10_red_zyph_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>Alcetyne® and Zyphranol® are both administered orally in the form of pills. Neither of them has severe side effects.</p>
+    
+    <p>The two medicines differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis is 15%. 
+    That means: Out of one hundred infected people who receive an early treatment with Alcetyne®, fifteen will be rescued and eighty-five will still die from the disease, 
+    on average.</p>
+    
+    <p>On average, the probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis is 10%. 
+    That means: Out of one hundred infected people who receive an early treatment with Zyphranol®, ten will be rescued and ninety will still die from the disease, 
+    on average.</p>
+    
+    <p>In addition to this difference in the medicines’ average efficacy, there is another difference:</p>
+    
+    <p>The 10% average probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis varies across patients depending on a patient’s type 
+    of blood composition. That means that the probability of survival due to a treatment with Zyphranol® will be much lower than 10% for some patients and much 
+    higher than 10% for other patients.</p> 
+    
+    <p>The 15% average probability with which an early treatment with Alcetyne® prevents infected people from dying varies only 
+    little depending on patients' blood composition.</p>
+    
+    <p>The different types of blood composition are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the drugs' preventive efficacy and patients' blood compositions. The two lines represent the two medicines. 
+    The different types of blood composition are shown on the x-axis. For each medicine, 
+    you can see how much the proportions of rescued infected patients differ depending on their type of blood composition.</p>
+    
+    <img src="img/`+random_image_10_red_zyph_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+        The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+        (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+        The red and blue line represent the two medicines (see graph legend).</i></p>
+        <p>If you have studied the information about the two medicines <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_10_red_zyph_red_unstable;
+	strength = "10%";
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+//////////////////
+/* Instructions strength .90 */
+var instr_strength_90_red_alce_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>Alcetyne® and Zyphranol® are both administered orally in the form of pills. Neither of them has severe side effects.</p>
+    
+    <p>The two medicines differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis is 85%. 
+    That means: Out of one hundred infected people who receive an early treatment with Alcetyne®, eighty-five will be rescued and fifteen will still die from the disease, 
+    on average.</p>
+    
+    <p>On average, the probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis is 90%. 
+    That means: Out of one hundred infected people who receive an early treatment with Zyphranol®, ninety will be rescued and ten will still die from the disease, 
+    on average.</p>
+    
+    <p>In addition to this difference in the medicines’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis varies across patients depending on a patient’s type 
+    of blood composition. That means that the probability of survival due to a treatment with Zyphranol® will be much lower than 90% for some patients and much 
+    higher than 90% for other patients.</p> 
+    
+    <p>The 85% average the probability with which an early treatment with Alcetyne® prevents infected people from dying varies only 
+    little depending on patients' blood composition.</p>
+    
+    <p>The different types of blood composition are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the drugs' preventive efficacy and patients' blood compositions. The two lines represent the two medicines. 
+    The different types of blood composition are shown on the x-axis. For each medicine, 
+    you can see how much the proportions of rescued infected patients differ depending on their type of blood composition.</p>
+    
+    <img src="img/`+random_image_90_red_alce_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+        The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+        (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+        The red and blue line represent the two medicines (see graph legend).</i></p>
+        <p>If you have studied the information about the two medicines <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_90_red_alce_red_stable;
+	strength = "90%";
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_90_red_alce_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>Alcetyne® and Zyphranol® are both administered orally in the form of pills. Neither of them has severe side effects.</p>
+    
+    <p>The two medicines differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis is 85%. 
+    That means: Out of one hundred infected people who receive an early treatment with Zyphranol®, eighty-five will be rescued and fifteen will still die from the disease, 
+    on average.</p>
+    
+    <p>On average, the probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis is 90%. 
+    That means: Out of one hundred infected people who receive an early treatment with Alcetyne®, ninety will be rescued and ten will still die from the disease, 
+    on average.</p>
+    
+    <p>In addition to this difference in the medicines’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis varies across patients depending on a patient’s type 
+    of blood composition. That means that the probability of survival due to a treatment with Alcetyne® will be much lower than 90% for some patients and much 
+    higher than 90% for other patients.</p> 
+    
+    <p>The 85% average the probability with which an early treatment with Zyphranol® prevents infected people from dying varies only 
+    little depending on patients' blood composition.</p>
+    
+    <p>The different types of blood composition are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the drugs' preventive efficacy and patients' blood compositions. The two lines represent the two medicines. 
+    The different types of blood composition are shown on the x-axis. For each medicine, 
+    you can see how much the proportions of rescued infected patients differ depending on their type of blood composition.</p>
+    
+    <img src="img/`+random_image_90_red_alce_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+        The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+        (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+        The red and blue line represent the two medicines (see graph legend).</i></p>
+        <p>If you have studied the information about the two medicines <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_90_red_alce_red_unstable;
+	strength = "90%";
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_90_red_zyph_red_stable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>Alcetyne® and Zyphranol® are both administered orally in the form of pills. Neither of them has severe side effects.</p>
+    
+    <p>The two medicines differ in their average efficacy:</p>
+    
+    <p>On average, the probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis is 85%. 
+    That means: Out of one hundred infected people who receive an early treatment with Zyphranol®, eighty-five will be rescued and fifteen will still die from the disease, 
+    on average.</p>
+    
+    <p>On average, the probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis is 90%. 
+    That means: Out of one hundred infected people who receive an early treatment with Alcetyne®, ninety will be rescued and ten will still die from the disease, 
+    on average.</p>
+    
+    <p>In addition to this difference in the medicines’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis varies across patients depending on a patient’s type 
+    of blood composition. That means that the probability of survival due to a treatment with Alcetyne® will be much lower than 90% for some patients and much 
+    higher than 90% for other patients.</p> 
+    
+    <p>The 85% average the probability with which an early treatment with Zyphranol® prevents infected people from dying varies only 
+    little depending on patients' blood composition.</p>
+    
+    <p>The different types of blood composition are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the drugs' preventive efficacy and patients' blood compositions. The two lines represent the two medicines. 
+    The different types of blood composition are shown on the x-axis. For each medicine, 
+    you can see how much the proportions of rescued infected patients differ depending on their type of blood composition.</p>
+    
+    <img src="img/`+random_image_90_red_zyph_red_stable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+        The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+        (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+        The red and blue line represent the two medicines (see graph legend).</i></p>
+        <p>If you have studied the information about the two medicines <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_90_red_zyph_red_stable;
+	strength = "90%";
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+var instr_strength_90_red_zyph_red_unstable = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus:[
+    `
+    <p>Alcetyne® and Zyphranol® are both administered orally in the form of pills. Neither of them has severe side effects.</p>
+   
+    <p>The two medicines differ in their average efficacy:</p>
+   
+    <p>On average, the probability with which an early treatment with Alcetyne® prevents death from Lipogastrosis is 85%. 
+    That means: Out of one hundred infected people who receive an early treatment with Alcetyne®, eighty-five will be rescued and fifteen will still die from the disease, 
+    on average.</p>
+    
+    <p>On average, the probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis is 90%. 
+    That means: Out of one hundred infected people who receive an early treatment with Zyphranol®, ninety will be rescued and ten will still die from the disease, 
+    on average.</p>
+    
+    <p>In addition to this difference in the medicines’ average efficacy, there is another difference:</p>
+    
+    <p>The 90% average probability with which an early treatment with Zyphranol® prevents death from Lipogastrosis varies across patients depending on a patient’s type 
+    of blood composition. That means that the probability of survival due to a treatment with Zyphranol® will be much lower than 90% for some patients and much 
+    higher than 90% for other patients.</p> 
+    
+    <p>The 85% average probability with which an early treatment with Alcetyne® prevents infected people from dying varies only 
+    little depending on patients' blood composition.</p>
+    
+    <p>The different types of blood composition are equally frequent in the population.</p>
+    
+    <p>Below you see a graph illustrating the relation between the drugs' preventive efficacy and patients' blood compositions. The two lines represent the two medicines. 
+    The different types of blood composition are shown on the x-axis. For each medicine, 
+    you can see how much the proportions of rescued infected patients differ depending on their type of blood composition.</p>
+    
+    <img src="img/`+random_image_90_red_zyph_red_unstable+`"></img>
+    <p><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+        The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+        (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+        The red and blue line represent the two medicines (see graph legend).</i></p>
+        <p>If you have studied the information about the two medicines <b>thoroughly</b> and if you feel that you've <b>fully understood</b> the presented information, please click "Continue" to proceed.</p>
+    `
+    ],
+	on_finish: function(data){
+	graph = random_image_90_red_zyph_red_unstable;
+	strength = "90%";
+	console.log(graph)
+  },
+    choices: ['Continue']
+}
+
+
+
+var cond_1 = {
+  timeline: [instr_strength_10_red_alce_red_stable],
+  conditional_function: function () {
+    if (cond_chosen == 1) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_1);
+
+var cond_2 = {
+  timeline: [instr_strength_10_red_alce_red_unstable],
+  conditional_function: function () {
+    if (cond_chosen == 2) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_2);
+
+var cond_3 = {
+  timeline: [instr_strength_10_red_zyph_red_stable],
+  conditional_function: function () {
+    if (cond_chosen == 3) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_3);
+
+var cond_4 = {
+  timeline: [instr_strength_10_red_zyph_red_unstable],
+  conditional_function: function () {
+    if (cond_chosen == 4) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_4);
+
+var cond_5 = {
+  timeline: [instr_strength_90_red_alce_red_stable],
+  conditional_function: function () {
+    if (cond_chosen == 5) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_5);
+
+var cond_6 = {
+  timeline: [instr_strength_90_red_alce_red_unstable],
+  conditional_function: function () {
+    if (cond_chosen == 6) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_6);
+
+var cond_7 = {
+  timeline: [instr_strength_90_red_zyph_red_stable],
+  conditional_function: function () {
+    if (cond_chosen == 7) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_7);
+
+var cond_8 = {
+  timeline: [instr_strength_90_red_zyph_red_unstable],
+  conditional_function: function () {
+    if (cond_chosen == 8) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_8);
+
+
+
+
+////////////////////////////// Instructing the Decision Situation 
+
+// slider
+var dec_pers = {
+    type: jsPsychHtmlSliderResponse,
+    stimulus: function () {
+	return `<div style="width:800px;">
+        <p><i>As a memory aid, below you see again the same graph that you were shown previously.</i></p>
+            <img src="img/`+graph+`"></img>
+              <figcaption align = justify><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+                The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+                (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+                The red and blue line represent the two medicines (see graph legend).</i>
+              </figcaption>
+  <p>In light of what you've learned about the disease and the two medicines, we'd now like you to imagine the following situation:</p>
+  <p>Imagine you have contracted Lipogastrosis and you know that you will certainly die if you don't act fast. 
+  To save your life you can decide to take either Zyphranol® or Alcetyne®, but not both. 
+  As you've learned, the average probability with which either medicine saves an infected person's life is `+strength+`, 
+  but the degree to which this probability varies depending on a person's blood composition is different for the two medicines. 
+  There is no time to assess which type of blood composition you have but you know that the different blood composition types are equally frequent.</p>
+  <p><b>Based on your personal intuition, which of the two medicines would you decide to take?</b></p>
+  </div>
+  `;
+  },
+    require_movement: true,
+    labels: ['Definitely <br>Alcetyne®', 'Definitely <br>Zyphranol®']
+};
+
+var cond_pers = {
+  timeline: [dec_pers],
+  conditional_function: function () {
+    if (cond_chosen == 3 || cond_chosen == 4 || cond_chosen == 7 || cond_chosen == 8) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_pers);
+
+
+
+
+// slider
+var dec_gov = {
+    type: jsPsychHtmlSliderResponse,
+    stimulus: function () {
+	return `<div style="width:800px;">
+        <p><i>As a memory aid, below you see again the same graph that you were shown previously.</i></p>
+            <img src="img/`+graph+`"></img>
+              <figcaption align = justify><i>The horizontal axis (x-axis) shows the different existing types of blood compositions.
+                The vertical axis (y-axis) shows the treatment efficacy in these different groups of patients 
+                (i.e., the percentage of infected people who are prevented from dying if they receive an early treatment with one of the two medicines). 
+                The red and blue line represent the two medicines (see graph legend).</i>
+              </figcaption>
+  <p>In light of what you've learned about the disease and the two medicines, we'd now like you to imagine the following situation:</p>
+  <p>To help people who contracted Lipogastrosis, the federal government has to make a fast decision. 
+  The government can decide to order either Zyphranol® or Alcetyne®, but not both. 
+  As you've learned, the average probability with which either medicine saves an infected person's life is `+strength+`, 
+  but the degree to which this probability varies depending on people's blood composition is different for the two medicines. 
+  It is known that the different blood composition types are equally frequent.</p>
+  <p><b>Based on your personal intuition, which of the two medicines should the government decide to order?</b></p>
+  </div>
+  `;
+  },
+    require_movement: true,
+    labels: ['Definitely <br>Alcetyne®', 'Definitely <br>Zyphranol®']
+};
+
+
+var cond_gov = {
+  timeline: [dec_gov],
+  conditional_function: function () {
+    if (cond_chosen == 1 || cond_chosen == 2 || cond_chosen == 5 || cond_chosen == 6) {
+      return true; 
+    } else {
+      return false;
+    }
+  }
+}
+timeline.push(cond_gov);
+
+
+////////////////////////////////////// free explanation 
+
+var explan = {
+  type: 'survey-text',
+  preamble: `
+      <p>On this screen, we'd like to learn a little bit more about the reasons for the ratings that you just provided.</p>
+      `,
+  questions: [
+    {prompt: '<i>Please use the text field below to give a short explanations of why you gave these ratings.</i>', rows: 10, columns: 100, required: true}
+  ],
+};
+//timeline.push(explan);
+
+
+
+//////////////////////////////////////////////////////
+/* Memory Checks */
+var mem_check = {
+  type: jsPsychSurveyMultiChoice,
+  questions: [
+    {
+      prompt: "Please select the option that is correct about the average efficacy of the two medicines.", 
+      name: 'Efficacy_check', 
+      options: ['90% vs. 85% efficacy on average.', '15% vs. 10% efficacy on average.'], 
+      required: true
+    }, 
+    {
+      prompt: "Please select the option that is correct about the variability of the medicines' efficacy.", 
+      name: 'Variability_check', 
+      options: [`1: Zyphranol's efficacy varies a lot depending on patients' blood composition.`, 
+      `2: Alcetyne's efficacy varies a lot depending on patients' blood composition.`,
+      `3: The efficacy of the two medicines varies only little depending on patients' blood composition.`], 
+      required: true
+    }, 
+  ],
+  preamble: "<b>Please answer these additional questions:</b>"
+};
+timeline.push(mem_check);
+
+
+
+
+
+/////////////////////////////////////// demographics
+var demogr_age = {
+  type: jsPsychSurveyText,
+  name: 'Age',
+  questions: [
+    {prompt: 'How old are you?', placeholder: 'Age as a number', required: true},
+  ]
+}
+
+
+
+var demogr_gender = {
+  type: jsPsychSurveyMultiChoice,
+  questions: [
+    {
+      prompt: "Please indicate with which gender you identify. ", 
+      name: 'Gender', 
+      options: ['1: male', '2: female', '3: non-binary', '4: prefer not to say'], 
+      required: true
+    },
+  ]
+};
+timeline.push(demogr_age, demogr_gender);
+
+
+
+
+/////////////////////////////////////// technical issues
+var tech_issues = {
+  type: jsPsychSurveyText,
+  name: 'Tech_issues',
+  questions: [
+    {prompt: 'In the text field below you can report any errors that you came across during the study (e.g., technical issues, layout problems, spelling errors, errors in program logic and flow, etc.).', rows: 10, columns: 100, required: false},
+  ]
+}
+timeline.push(tech_issues);
+
+///////////////////////////////////// debriefing
+
+var debriefing = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: 
+    `
+    <img src="img/uni_org_color_li.jpg" width = 100%></img>
+    <p><b>Thank you for taking part in this study!</b></p>
+  
+    <p>The aim of this experiment is to find out more about how people reason about the stability of causal relationships in decision contexts. 
+    If you are interested in further details or if you have any questions or comments concerning the experiment, 
+    feel free to contact me (Simon Stephan) under <i>sstepha1@uni-goettingen.de</i>
+    
+    <p>Stay safe and have a merry Christmas.</p>
+    <img src="img/rudolph2.png" width = 40%></img>
+    
+    <p>To ensure you receive your reward, please click the button below to return to the Prolific website:</p>
+    `
+    ,
+    choices: ['Finish study']
+};
+timeline.push(debriefing);
+
+
+
+/////////////////////////////////////////////////////////////////
+/* start the experiment */
+    jsPsych.run(timeline);
+
+  
+  </script>
+</html>
