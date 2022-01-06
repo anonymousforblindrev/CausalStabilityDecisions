@@ -1,5 +1,6 @@
 ---
 title: "Making the stable cause weaker: Testing further scenarios"
+author: "Simon Stephan"
 output:  
   html_document:
     number_sections: true
