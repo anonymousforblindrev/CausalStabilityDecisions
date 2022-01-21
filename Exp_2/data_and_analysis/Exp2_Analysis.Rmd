@@ -85,7 +85,7 @@ tdata_long$causal_strength <- factor(tdata_long$causal_strength, levels = c("nin
 
 
 tdata_long$decision_level <- factor(tdata_long$decision_level, levels = c("general_norm", "personal"), 
-                              labels = c("general norm", "personal"))
+                              labels = c("societal", "personal"))
 
 
 #tdata_long <- subset(tdata_long, causal_strength == "mean strength = 0.90")
@@ -142,7 +142,7 @@ g <- ggplot(tdata_sub, aes(x=decision_level, y=valueJitter)) +
   stat_summary(aes(y = main_dv_rec,group=1), fun.data = mean_cl_boot, geom = "errorbar", width = 0, size = 1) +
   stat_summary(aes(y = main_dv_rec,group=1, fill = decision_level), fun.y=mean, geom="point", color = "black", shape = 22, size = 5, group=1, alpha = 1)+
   stat_summary(aes(y = main_dv_rec,group=1), fun.y=median, geom="point", color = "black", shape = 3, size = 4, group=1, alpha = 1, position = position_dodge(width = 0.5))+
-  labs(x = "Context (decison level)", y = "Causal preference") +
+  labs(x = "Decision level", y = "Causal preference") +
   scale_color_manual(name = "Dec. Level",values=c("#66c2a5", "#e78ac3"))+
   scale_fill_manual(name = "Dec. Level",values=c("#66c2a5", "#e78ac3"))+
   theme(legend.position = "none")+
@@ -665,7 +665,7 @@ g<- ggplot(plotdata,
   scale_fill_manual(values=alpha(c("#636363", "#fc9272", "#3182bd"),0.7)) +
   labs(y = "Percentage", 
        fill = "Preference",
-       x = "Context (decision level)")+
+       x = "Decision level")+
   #annotate(geom = "hline",yintercept = 0.5, y = 0.5, color = "black", size = 1, linetype='dotted')+
   #annotate("pointrange", x = c(1,2), y = 1 - plotdata$pct, 
   #         ymin = 1 - plotdata$pct - plotdata$CI, 
